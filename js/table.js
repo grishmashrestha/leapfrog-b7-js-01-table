@@ -40,3 +40,18 @@ th2.appendChild(th2Node);
 tr.appendChild(th1);
 tr.appendChild(th2);
 tbl.appendChild(tr);
+
+// extracting data from studentDeets and placing it in the table elements
+for (var i=0; i<studentDeets.length; i++) {
+  var tr = document.createElement('tr');
+  var td1 = document.createElement('td');
+  var td2 = document.createElement('td');
+  td1.innerHTML = studentDeets[i].roll; // used innerHTML instead of createTExtNode just to try new things :P
+  td2.innerHTML = studentDeets[i].name;
+
+  tr.appendChild(td1);
+  tr.appendChild(td2);
+  tbl.appendChild(tr);
+};
+
+document.body.appendChild(tbl);
