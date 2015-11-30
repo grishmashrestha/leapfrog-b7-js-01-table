@@ -48,10 +48,17 @@ for (var i=0; i<studentDeets.length; i++) {
   var td2 = document.createElement('td');
   td1.innerHTML = studentDeets[i].roll; // used innerHTML instead of createTExtNode just to try new things :P
   td2.innerHTML = studentDeets[i].name;
+  td1.style.border="solid 1px #000";
+  td2.style.border="solid 1px #000";
 
   tr.appendChild(td1);
   tr.appendChild(td2);
   tbl.appendChild(tr);
 };
+
+tbl.style.border="solid 1px #000";
+tbl.style.textAlign="left";
+th1.style.border="solid 1px #000";
+th2.style.border="solid 1px #000";
 
 document.body.appendChild(tbl);
