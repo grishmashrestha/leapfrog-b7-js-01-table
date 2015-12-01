@@ -161,21 +161,21 @@ function tableCreate(){
   for(var i = 0; i < data.length; i++){
     var tr = tbl.insertRow();
     
-    var td1 = tr.insertCell();
-    td1.appendChild(document.createTextNode(data[i].roll));
-    td1.style.border = '1px solid black';
+    var tdRoll = tr.insertCell();
+    tdRoll.appendChild(document.createTextNode(data[i].roll));
+    tdRoll.style.border = '1px solid black';
     
-    var td2 = tr.insertCell();
-    td2.appendChild(document.createTextNode(data[i].name));
-    td2.style.border = '1px solid black';
+    var tdName = tr.insertCell();
+    tdName.appendChild(document.createTextNode(data[i].name));
+    tdName.style.border = '1px solid black';
 
-    var td3 = tr.insertCell();
-    td3.appendChild(document.createTextNode(data[i].college));
-    td3.style.border = '1px solid black';
+    var tdCollege = tr.insertCell();
+    tdCollege.appendChild(document.createTextNode(data[i].college));
+    tdCollege.style.border = '1px solid black';
 
-    var td4 = tr.insertCell();
-    td4.appendChild(document.createTextNode(data[i].course));
-    td4.style.border = '1px solid black';
+    var tdCourse = tr.insertCell();
+    tdCourse.appendChild(document.createTextNode(data[i].course));
+    tdCourse.style.border = '1px solid black';
   }
   body.appendChild(tbl);
 }
