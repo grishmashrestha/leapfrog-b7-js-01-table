@@ -2,7 +2,6 @@
 <html>
 <head>
 	<title>Table</title>
-<script type="text/javascript" src="table.js"></script>
 </head>
 <body>
 <script type="text/javascript">
@@ -157,11 +156,7 @@ var data=[
       tbl.style.width = '100%';
       tbl.setAttribute('border','1');
 
-      toprow = document.createElement('tr');
-      col1 = document.createElement('td');
-      var t = document.createTextNode('S.N.');
-      col1 = appendChild(t);
-      
+    
      
       for(var i=0; i<=data.length;i++){
         
@@ -169,6 +164,7 @@ var data=[
          varObj = data[i];
          column1 = document.createElement('td');
          column1.innerHTML = varObj.name;
+         console.log(varObj.name);
          tr.appendChild(column1);
 
          column2 = document.createElement('td');
