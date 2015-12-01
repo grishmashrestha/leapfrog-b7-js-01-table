@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Demo</title>
+<style>
+#div1 {margin:10px;font-size:1.25em;}
+table {border-collapse:collapse;border:1px solid #7f7f7f;}
+td {border:1px solid #7f7f7f;width:50px;height:50px;text-align:center;}
+</style>
+<script>
+
+var students = [{
+name:"Saroj Bhandari",
+campus: "Pulchowk Campus",
+rollno: 40
+},{
+name:"Saurav Lal Karn",
+campus: "Pulchowk Campus",
+rollno: 41
+},{
+name:"Santosh Pandey",
+campus: "Pulchowk Campus",
+rollno: 38
+}];
+var totalRows = students.length;
+var cellsInRow = students[0].length;
+    function drawTable() {
+        // get the reference for the body
+        var div1 = document.getElementById('div1');
+ 
+        // creates a <table> element
+        var tbl = document.createElement("table");
+ 
+        // creating rows
+        for (var r = 0; r < totalRows; r++) {
+            var row = document.createElement("tr");
+	     
+	     // create cells in row
+		//for name
+		 var cell = document.createElement("td");
+		        var cellText = document.createTextNode(students[r].name);
+                cell.appendChild(cellText);
+                row.appendChild(cell);
+				//for campus
+                var cell = document.createElement("td");
+				cellText = document.createTextNode(students[r].campus);
+				cell.appendChild(cellText);
+                row.appendChild(cell);
+				//for roll no
+                var cell = document.createElement("td");
+				cellText = document.createTextNode(students[r].rollno);
+				cell.appendChild(cellText);
+                row.appendChild(cell);
+          //  }           
+            
+	tbl.appendChild(row); 
+        }
+    
+     div1.appendChild(tbl); 
+}
+window.onload=drawTable; 
+</script>
+</head>
+<body >
+
+<div id="div1"></div>
+</body>
+</html>
