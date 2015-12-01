@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+
+
+
+
+  </head>
+
+	
+	
+
+  <body>
+    <script>
+        
+            
+
+       var data=[
+      {         
+        name:'Rajan Shrestha',
+        college:'Kathmandu Engineering College',
+        course:'Computer Engineering',
+        roll:3
+      },
+      {
+        name:'Sanjay Maharjan',
+        college:'KEC',
+        course:'Computer Engineeing',
+        roll:8
+      },
+      {
+        name:'Prayas Neupane',
+        college:'Pulchowk Campus',
+        course:'Computer Engineeing',
+        roll:12
+      },
+      {
+        name:'Santosh Pandey',
+        college:'IOE Pulchowk Campus',
+        course: 'Computer Engineeing',
+        roll:'5'
+      },
+      {
+        name:'Gaurav KC',
+        college:'Kathmandu Engineering College, Kalimati',
+        course:'Computer Engineeing',
+        roll:'21'
+      },
+      {
+        name:'Madan Dhungana',
+        college:'ACEM',
+        course:'Computer Engineeing',
+        roll:'2'
+      },
+      {
+        name:'Bishal Shrestha',
+        college:'Apex',
+        course:'Computer Information Systems',
+        roll: 1
+      },
+      {
+        name:'Achyut Pokhrel',
+        college:'St.Xavier\'s College',
+        course:'BSc CSIT',
+        roll: 20
+      },
+      {
+        name: 'Romit Amgai',
+        college: 'ACEM',
+        course: 'Computer Engineering',
+        roll: 13
+      },
+      {
+        name: 'Pratish Bahadur Shrestha',
+        college: 'ACEM',
+        course: 'Computer Engineering',
+        roll: 24
+      },
+      {
+        name: 'Binod Kumar Shrestha',
+        college: 'Pulchowk campus',
+        course: 'Computer Engineering',
+        roll: 17
+      },
+      {
+        name:'Bishal Shrestha',
+        college:'ACEM',
+        course:'Computer Engineeing',
+        roll:16
+      },
+      {
+        name: 'kamal Bahadur Rana',
+        college: 'pulchowk campus',
+        course: 'Electronics Engineering',
+        roll: 18
+      },
+      {
+        name:'Kiran Sharma',
+        college:'Prime College',
+        course:'BSc.CSIT',
+        roll:23
+      },
+      {
+        name:'Sampresh Shrestha',
+        college:'Kantipur',
+        course:'Computer Engineeing',
+        roll:15
+      },
+      {
+        name:'Kiran Pariyar',
+        college:'ACEM',
+        course:'Computer Engineeing',
+        roll:14
+      },
+      {
+        name:'Ruban Dangol',
+        college:'Islington College',
+        course:'BSc Hons in Computing',
+        roll:19
+      },
+      {
+        name:'Sujan Vaidya',
+        college:'Texas College',
+        course:'CSIT',
+        roll:4
+      },
+      {
+        name:'Saurav Lal Karn',
+        college:'Pulchowk Campus',
+        course:'Computer Engineering',
+        roll:11
+      },
+      {
+        name:'Bibek Shah',
+        college:'Pulchowk Campus',
+        course:'Electronics Engineering',
+        roll:6
+      },
+      {
+        name:'Laxman khanal',
+        college:'ACEM',
+        course:'Computer Engineering',
+        roll:9
+      },
+      {
+        name:'Prajjwal Raj Kandel',
+        college:'Pulchowk Campus',
+        course:'Electronics Engineering',
+        roll:22 
+      },
+      {
+        name:'Saroj Bhandari',
+        college:'Pulchowk Campus',
+        course:'Computer Engineering',
+        roll:10
+      },
+      {
+        name: 'Grishma Shrestha',
+        college: 'Kathmandu Engineering College',
+        course: 'Computer Engineering',
+        roll: 7
+      }];
+      }];
+      var table=document.createElement('table');
+      table.setAttribute('boder','1px solid black');
+      table.setAttribute('width','100%');
+      table.setAttribute('id','student-table')
+      
+      
+      
+      
+      for(var i=0;i<data.length;i++){
+        
+        var tr=document.createElement('tr');
+        tr.setAttribute('id',"row");
+        
+        
+        var td1=document.createElement('td');
+        td1.setAttribute('id','column1');
+        var name=data[i].name;
+        td1.appendChild(name);
+        document.getElementById('row').appendChild(td);
+        
+        
+        var td2=document.createElement('td');
+        td2.setAttribute('id','column2');
+        var college=data[i].college;
+        td2.appendChild(college);
+        document.getElementById('row').appendChild(td2);
+        
+        
+        var td3=document.createElement('td');
+        td3.setAttribute('id','column3');
+        var course=data[i].course;
+        td3.appendChild(course);
+        document.getElementById('row').appendChild(td3);
+        
+        
+        var td4=document.createElement('td');
+        td4.setAttribute('id','column4');
+        var roll=data[i].roll;
+        td4.appendChild(roll);
+        document.getElementById('row').appendChild(td4);
+        
+        document.getElementById('student-table').appendChild(tr);
+      }
+
+           
+     document.body.appendChild(table); 
+    
+
+    </script>
+  </body>
+</html>
