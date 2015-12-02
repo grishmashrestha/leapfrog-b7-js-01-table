@@ -5,7 +5,6 @@ function Animator(element) {
 		var style = window.getComputedStyle(element);
 		var initial = style.getPropertyValue(cssProperty);
 		initial = parseInt(initial);
-		console.log("initial",initial);
 		var slides = element.children;
 		var step = value / (duration / 50);
 
@@ -13,10 +12,9 @@ function Animator(element) {
 		var intervalId = setInterval(function() {
 			counter++;
 			var current = step * counter;
-			console.log("current",current);
+			
 			// element.innerHTML = current;
 			element.style[cssProperty] = (current) + initial + 'px';
-			console.log(element.style[cssProperty]);
 			if (counter >= duration/50)
 				clearInterval(intervalId);
 		
