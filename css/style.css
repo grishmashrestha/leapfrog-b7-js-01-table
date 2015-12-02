@@ -1,0 +1,20 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.mainWrapper{
+	width:1000px;
+	overflow: hidden;
+	margin: 0 auto;
+}
+.longImageWrapper{
+	width: 10000px;
+	margin-left: 0px;
+}
+.mainWrapper .slide{
+	float: left;
+}
+.slide img{
+	width: 1000px;
+	height: 400px;
+}
