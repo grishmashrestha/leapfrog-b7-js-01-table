@@ -1,0 +1,48 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+#navDiv{
+	position: absolute;
+  top: 250px;
+  z-index: 10;
+}
+div #leftArrow{
+  width:62px;
+  height: 100px;
+  background-image: url("../images/leftArrow.png");
+  position: absolute;
+  left: 10px;
+  top: 100px;
+  z-index: 10;
+}
+div #leftArrow:hover{
+  background-image: url("../images/leftArrow-fade.png");
+}
+div #rightArrow{
+  width:62px;
+  height: 100px;
+  background-image: url("../images/rightArrow.png");
+  position: absolute;
+  left: 820px;
+  top: 100px; 
+  z-index: 10; 
+}
+div #rightArrow:hover{
+  background-image: url("../images/rightArrow-fade.png");
+}
+div.slider {
+  position: relative;
+	width:900px;
+	overflow: hidden;
+	height: 300px;
+	margin:0 auto;
+}
+div.slider div.sliderLong {
+	width: 10000px;
+}
+div.slider img {
+	width:900px;
+	height:300px;
+  margin-right: -7px;
+}
