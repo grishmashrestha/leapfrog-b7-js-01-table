@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<title> slider </title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+<div class="slider">
+	<div class="sliderLong">
+		<img src="images/img1.jpg" alt="" />
+		<img src="images/img2.jpg" alt="" />
+		<img src="images/img3.jpg" alt="" />
+		<img src="images/img4.jpg" alt="" />
+		<img src="images/img5.jpg" alt="" />
+		<img src="images/img6.jpg" alt="" />
+		<img src="images/img7.jpg" alt="" />
+		<img src="images/img8.jpg" alt="" />
+		
+	</div>
+	<div class="right_arrow">
+			
+	</div>
+	<div class="left_arrow">
+		
+	</div>
+	<div class="navigation" id="navDiv">
+	
+</div>
+
+<!-- <div id="box1" class="tempbox"> -->
+
+<!-- </div> -->
+
+
+<script type="text/javascript" src="animator.js"> </script>
+<script type="text/javascript" src="my_navigator.js"> </script>
+<!-- navigation class -->
+
+<script>
+
+
+
+var imgWidth = 900;
+var active = 1;
+var slider = document.getElementsByClassName("sliderLong")[0];
+var sliderLong = slider.children[0];
+
+var slides = slider.children;
+
+ 
+var myanimator = new  Animator(slider);
+console.log(myanimator);
+active=1;
+console.log('the slider length is ', slides.length);
+
+
+
+
+
+
+var creating_bar  = navi_bar(active);
+
+var myfunction = function(){
+
+	//changeState(active, slides.length);
+
+	active = active >= slides.length ? active = 1 : ++active;
+	var ml = (900 * (active-1) * -1);
+	var idthis = myanimator.animate('margin-left',ml,900);
+	navichange(active-1,slides.length);
+}
+
+
+var myId = setInterval(myfunction,2700);
+
+
+
+right_arrow = document.getElementsByClassName('right_arrow')[0];
+left_arrow=document.getElementsByClassName('left_arrow')[0];
+
+
+
+right_arrow.onclick = function  right_click_func(){
+
+
+
+		clearInterval(myId);
+		active++;
+		var ml = (900 * (active-1) * -1);
+		console.log('you have pressed right arrow');
+		console.log(' from right arrow the active value is ',active);
+		console.log(' from right arrow ml value is  ', ml);
+		
+		
+		var idthis = myanimator.animate('margin-left',ml,900);
+		navichange(active-1,slides.length);
+		myId = setInterval(myfunction,1800);
+	};
+
+left_arrow.onclick = function() {
+		clearInterval(myId);
+		active--;
+		var ml = (900 * (active-1) * -1);
+		console.log('you have pressed right arrow');
+		console.log(' from right arrow the active value is ',active);
+		console.log(' from right arrow ml value is  ', ml);
+		var idthis = myanimator.animate('margin-left',ml,900);
+		navichange(active-1,slides.length);
+		myId = setInterval(myfunction,1800);
+	};
+
+
+	function onclicking(i){
+		clearInterval(myId);
+		active = i+1;
+		var ml = (900 * (active-1) * -1);
+		console.log('you have pressed right arrow');
+		console.log(' from right arrow the active value is ',active);
+		console.log(' from right arrow ml value is  ', ml);
+		var idthis = myanimator.animate('margin-left',ml,900);
+		navichange(active-1,slides.length);
+		myId = setInterval(myfunction,1800);
+
+	}
+
+
+
+
+
+
+
+
+
+
+//right and left ;
+
+
+
+
+
+
+
+
+
+//var idthis = myanimator.animate('margin-left',-1800,900);
+
+//var intervalId = setInterval(function(){
+	//var myanimator = new  Animator(box1);
+	//console.log(myanimator);
+//	var idthis = myanimator.animate('margin-left',-1800,900);
+	
+//},900);
+
+
+
+
+
+
+
+//setInterval(myanimator.animate('margin-left',-900,1000);,500);
+
+
+
+
+
+</script>
+
+</body>
+</html>
