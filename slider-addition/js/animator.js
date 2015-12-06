@@ -1,7 +1,7 @@
 function Animator(element) {
 	this.el = element;
 	var that = this;
-
+	var intervalId;
 	this.animate = function(cssProperty, value, duration) {
 		var style = window.getComputedStyle(element);
 		var initial = style.getPropertyValue(cssProperty);
@@ -9,7 +9,7 @@ function Animator(element) {
 
 		var step = (value - initial) / (duration / 50);
 		var counter = 0;
-		var intervalId = setInterval(function() {
+		intervalId = setInterval(function() {
 			counter++;
 			//var current = step * counter;
 			element.style[cssProperty] = parseInt(style.getPropertyValue(cssProperty)) + step + 'px';
@@ -29,8 +29,12 @@ function Animator(element) {
 		//added code
 	}
 
+	//implement it 
+
 	// should stop the animation and element's properties should be at "end" value
 	this.finish = function() {
+		console.log(intervalId);
+		clearInterval(intervalId);
 
 	}
 

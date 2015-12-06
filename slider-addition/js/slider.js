@@ -1,4 +1,4 @@
-//extracting the property of the image numbers
+//extracting thex property of the image numbers
 	var imgWidth = 900;
 	var active = 1;
 	var slider = document.getElementsByClassName("sliderLong")[0];
@@ -9,7 +9,7 @@
   var leftclick = document.getElementById("leftArrow");
   leftclick.onclick = function() {leftClickFunction()};
   function leftClickFunction(){
-    showNextImage();
+    showPreviousImage();
     console.log("left clicked:");
   }
 
@@ -17,7 +17,7 @@
   var rightclick = document.getElementById("rightArrow");
   rightclick.onclick = function() {rightClickFunction()};
   function rightClickFunction(){
-    showPreviousImage();
+    showNextImage();
     console.log("right clicked:");
   }
   //navigation function here
