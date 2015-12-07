@@ -2,7 +2,6 @@ var counter = 800;
 var creator = new Creator();
 
 creator.createPlayer();
-addEventListener("keydown", creator.checkKeyPressed, false);
 
 var mainIntervalId = setInterval(function(){
   gameloop();
@@ -16,7 +15,9 @@ var gameloop = function() {
   }
   creator.moveBaddies();
   creator.checkBaddies();
+  creator.movePlayer();
   counter ++;
 }
 
+addEventListener("keydown", creator.checkKeyPressed, false);
 

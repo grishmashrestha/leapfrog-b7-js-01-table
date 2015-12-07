@@ -16,6 +16,7 @@ function CollisionDetector(){
     if ((x1 < x2 + wd2 && x1 + wd1 > x2 && y1 < y2 + ht2 && ht1 + y1 > y2) || 
      (x2 < x1 + wd1 && x2 + wd2 > x1 && y2 < y1 + ht1 && ht2 + y2 > y1)){
       console.log('kaboom');
+      alert('kaboom!! oh no!');
       clearInterval(mainIntervalId);
     }
   }

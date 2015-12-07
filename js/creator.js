@@ -36,7 +36,6 @@ function Creator() {
     else if (e.keyCode == "39") {
       player.setLeft(l+4);
     }
-    player.move();
   }
 
   this.getAllBaddie = function() {
@@ -54,6 +53,10 @@ function Creator() {
     for(var i=0; i<len; i++){
       detector.check(allBaddies[i],player);
     }
+  }
+
+  this.movePlayer = function() {
+    player.move();
   }
 
 }
