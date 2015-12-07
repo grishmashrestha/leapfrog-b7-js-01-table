@@ -1,0 +1,57 @@
+<html>
+<head>
+	<link href='css/move.css' rel='stylesheet' type='text/css'>
+	</head>
+<body>
+	<div class='container'>
+<div class='road'>
+	
+	
+		</div>
+</div>	
+	
+</body>
+	<script src='js/background.js'></script>
+	<script src='js/block.js'></script>
+	<script src='js/bike.js'></script>
+	<script src='js/collision.js'></script>
+	<script>
+	var road=document.getElementsByClassName('container');
+		
+		var blockade1=document.createElement('div');
+		blockade1.setAttribute('id','block');
+		blockade1.setAttribute('class','block');
+		document.getElementsByClassName('road')[0].appendChild(blockade1);
+		
+		var pulsar=new Bike();
+		pulsar.create(document.getElementsByClassName('road')[0],'redbike');
+		var run=new Background();
+		var block=new Block();
+		var c=0;
+		var detect=new Strike();
+		
+		document.addEventListener('keydown', function(e) {
+			if(e.keyCode=='37'){
+//				alert('left clicked');
+				pulsar.left=pulsar.left-5;
+			}
+			if(e.keyCode=='39'){
+//				alert('right clicked');
+				pulsar.left=pulsar.left+5;
+			}
+        }, false);
+		
+//		document.addEventListener('keydown',keyPress(event),false);
+		var move=function(){
+			c++;
+			run.slide();
+			if(c==500){
+				c=0;
+			block.create();
+			}
+			pulsar.ride();
+			detect.hittest(block,pulsar);
+		}
+		var gameId=setInterval(move,5);
+	</script>
+</html>
