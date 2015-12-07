@@ -1,0 +1,31 @@
+/*start of clearfix*/
+.clearfix:before, .clearfix:after {
+    content:"";
+    display:table;
+}
+.clearfix:after {
+    clear:both;
+}
+.clearfix { zoom:1; /*IE6 & 7*/}
+
+*{
+  margin: 0 auto;
+  padding: 0px;
+}
+/* end of clearfix*/
+
+.containerWrapper {
+  height: 800px;
+  width: 600px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid black
+}
+
+.container {
+  height: 100000000px;
+  width: 600px;
+  float: left;
+  background-color: #000;
+  background: url('../images/bk.png') repeat-y; 
+}
