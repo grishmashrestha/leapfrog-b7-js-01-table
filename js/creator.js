@@ -48,4 +48,12 @@ function Creator() {
     player.create();
   }
 
+  this.checkBaddies = function() {
+    var detector = new CollisionDetector();
+    var len = allBaddies.length;
+    for(var i=0; i<len; i++){
+      detector.check(allBaddies[i],player);
+    }
+  }
+
 }
