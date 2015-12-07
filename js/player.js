@@ -17,6 +17,10 @@ function Player() {
     this.appendTo(parent);
   }
 
+  this.move = function() {
+    player.style.left = left +'px';
+  }
+
   this.appendTo = function(parentElement) {
     parentElement.appendChild(player);
   }
@@ -24,6 +28,14 @@ function Player() {
   this.addClass = function(className) {
     player.setAttribute("class", 
       player.getAttribute("class") + " " + className);
+  }
+
+  this.getLeft = function() {
+    return left;
+  }
+
+  this.setLeft = function(l) {
+    left = l;
   }
 
 }
