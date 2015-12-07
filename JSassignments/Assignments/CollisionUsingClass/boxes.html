@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<title></title>
+		<link href="boxes.css" rel="stylesheet" />
+	</head>
+	
+	<body>
+
+    <div id = "mainbody">
+    </div>
+
+		<script src="Box.js"></script>
+		<script type="text/javascript">
+      var n=5;
+      var boxArray = [];
+
+      for(var i=0;i<n;i++){
+        var box = new Box();
+        box.element.setAttribute("class", "box yellow");
+        box.appendTo(document.getElementById("mainbody"));
+        boxArray[i] = box;
+      }
+
+      function moveboxes(){
+        for(var i=0;i<n;i++){
+          boxArray[i].moveBox();
+          //console.log(boxArray[i].xposition);
+        }
+      }
+      function collide(){
+        for(var i=0;i<n;i++)
+          for(var j=i+1;j<n;j++){
+            //if(i!=j)
+              boxArray[i].hitTest(boxArray[j]);
+            console.log(boxArray[i].isCollision);
+          }
+      }
+      function allmove(){
+        collide();
+        moveboxes();
+      }
+
+      setInterval(allmove,40);
+
+		</script>
+	</body>
+</html>

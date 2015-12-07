@@ -1,0 +1,111 @@
+<html>
+	<head>
+		<title></title>
+		<link href="boxes.css" rel="stylesheet" />
+	</head>
+	
+	<body>
+
+    <div id = "mainbody" onclick="showCoords(event)">
+    </div>
+    <div class="inputFormContainer">
+        Velocity:<input id="velocity" type="text" name="velocity" style="width:100px;"/>
+        Angle :<input id="angle" type="text" name="angle" style="width:100px;"/>
+        <input type="submit" onclick="fun()" value="GO"/>
+    </div>
+
+		<script src="Box.js"></script>
+    <script src="BoxStriker.js"></script>
+		<script type="text/javascript">
+      var n=5;
+      var boxArray = [];
+
+      
+
+      // var ang = parseInt(document.getElementById("angle").value);
+      
+      // var xspeed = Math.round(vel  * Math.cos(ang * Math.PI /180));
+      // var yspeed = Math.round(-vel * Math.sin(ang * Math.PI /180));
+      // console.log(vel);
+      // console.log(ang);
+      // var xdir = 1;
+      // var ydir = Math.round(-xdir * Math.tan(ang * Math.PI /180));
+      // var xspeed = vel*xdir;
+      // var yspeed = vel*ydir;
+      // console.log(xspeed);
+
+      // var vel = document.getElementById("velocity");
+      // console.log(vel.value);
+
+      function createboxes(){
+
+        var box = new BoxStriker();
+        box.element.setAttribute("class", "box green");
+        box.appendTo(document.getElementById("mainbody"));
+        boxArray[0] = box;
+
+        for(var i=1;i<n;i++){
+          var box = new Box();
+          box.element.setAttribute("class", "box yellow");
+          box.appendTo(document.getElementById("mainbody"));
+          // var xpos = Math.floor((Math.random()*740)+0);
+          // var ypos = Math.floor((Math.random()*540)+0);
+          // box.initializeValue(xpos,ypos,5,5);
+          boxArray[i] = box;
+        }
+      }
+
+      function moveboxes(){
+        for(var i=0;i<n;i++){
+          boxArray[i].moveBox();
+          //console.log(boxArray[i].xposition);
+        }
+      }
+      function collide(){
+        for(var i=0;i<n;i++)
+          for(var j=i+1;j<n;j++){
+            //if(i!=j)
+              boxArray[i].hitTest(boxArray[j]);
+            // console.log(boxArray[i].isCollision);
+          }
+      }
+      function allmove(){
+        collide();
+        moveboxes();
+      }
+
+      createboxes();
+      // var Gobutton = document.getElementById("Gobutton");
+      // Gobutton.onclick = function(){
+      //   setInterval(allmove,40);
+      // } 
+      var fun = function(){
+        var ang = parseInt(document.getElementById("angle").value);
+        var vel = parseInt(document.getElementById("velocity").value);
+        var xdir = 1;
+        var ydir = Math.round(-xdir * Math.tan(ang * Math.PI /180));
+        var xspeed = vel*xdir;
+        var yspeed = vel*ydir;
+        boxArray[0].dx = xspeed;
+        boxArray[0].dy = yspeed;
+
+        setInterval(allmove,30);
+      }
+      function showCoords(event){
+        var x=event.clientX;
+        var y=event.clientY;
+        var vel =5;
+        var ang = Math.atan(-(540-y)/(20-x)) * 180 / Math.PI;
+        console.log(ang);
+        var xdir = 1;
+        var ydir = Math.round(-xdir * Math.tan(ang * Math.PI /180));
+        var xspeed = vel* xdir;
+        var yspeed = vel * ydir;
+        boxArray[0].dx = xspeed;
+        boxArray[0].dy = yspeed;
+
+        setInterval(allmove,30);
+      }
+		</script>
+	</body>
+</html>
