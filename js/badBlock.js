@@ -2,7 +2,7 @@ function BadBlock(divId, position) {
   var ht = 70; 
   var wd = 50; 
   var left = Math.floor(Math.random() * 500) + 20; 
-  var bottom = 800;
+  var top = 10;
   var baddie = document.createElement('div');
   var parent = document.getElementsByClassName('containerWrapper')[0];
   var divId = divId;
@@ -20,15 +20,15 @@ function BadBlock(divId, position) {
     baddie.setAttribute('class', 'baddie');
     baddie.style.height =  ht +'px';
     baddie.style.width = wd +'px';
-    baddie.style.bottom = bottom +'px';
+    baddie.style.top = top +'px';
     baddie.style.left = left +'px';
     this.addClass('baddie'+divId);
     this.appendTo(parent);
   }
 
   this.move = function() {
-    bottom = bottom - 1;
-    baddie.style.bottom = bottom + 'px';
+    top = top + 1;
+    baddie.style.top = top + 'px';
   }
 
   this.appendTo = function(parentElement) {
@@ -38,6 +38,23 @@ function BadBlock(divId, position) {
   this.addClass = function(className) {
     baddie.setAttribute("class", 
       baddie.getAttribute("class") + " " + className);
+  }
+
+  // getter and setter methods 
+  this.getLeft = function() {
+    return left;
+  }
+
+  this.getTop = function() {
+    return top;
+  }
+
+  this.getWd = function() {
+    return wd;
+  }
+
+  this.getHt = function() {
+    return ht;
   }
 
 }
