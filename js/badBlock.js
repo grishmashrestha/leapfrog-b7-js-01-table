@@ -2,9 +2,9 @@ function BadBlock(divId, position) {
   var ht = Math.floor(Math.random() * 200) + 100; 
   var wd = Math.floor(Math.random() * 120) + 40; 
   var left = Math.floor(Math.random() * 500) + 20; 
-  var bottom = 800*position;
+  var top = 0;
   var baddie = document.createElement('div');
-  var parent = document.getElementsByClassName('container')[0];
+  var parent = document.getElementsByClassName('containerWrapper')[0];
   var divId = divId;
 
   this.create = function() {
@@ -20,10 +20,14 @@ function BadBlock(divId, position) {
     baddie.setAttribute('class', 'baddie');
     baddie.style.height =  ht +'px';
     baddie.style.width = wd +'px';
-    baddie.style.bottom = bottom +'px';
+    baddie.style.top = top +'px';
     baddie.style.left = left +'px';
     this.addClass('baddie'+divId);
     this.appendTo(parent);
+  }
+
+  this.move = function() {
+
   }
 
   this.appendTo = function(parentElement) {

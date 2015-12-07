@@ -4,7 +4,6 @@ var creator = new Creator();
 creator.createPlayer();
 setInterval(function(){
   gameloop();
-  
 }, 5);
 
 var gameloop = function() {
@@ -13,17 +12,8 @@ var gameloop = function() {
     creator.createBaddies();
     counter = 0;
   }
+  
+  creator.moveBaddies();
   counter ++;
   // creator.checkPlayerForCollision();
 }
-
-// function BadBlocks() {
-//   var ht, wd, left, top;
-//   var baddie = document.createElement('div');
-//   wd = 50;
-
-//   this.init = function() {
-
-//   }
-
-// }

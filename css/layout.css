@@ -8,34 +8,31 @@
 }
 .clearfix { zoom:1; /*IE6 & 7*/}
 
-*{
-  margin: 0 auto;
-  padding: 0px;
-}
 /* end of clearfix*/
 
 .containerWrapper {
   height: 800px;
   width: 600px;
   overflow: hidden;
+  margin:0 auto;
+  position: relative;
 }
 
 .container {
   height: 100000px;
   width: 600px;
-  float: left;
   background: url('../images/bk.png') repeat-y;
-  position: relative;
+  position: absolute;
   top: -99200px;
 }
 
 .baddie {
-  position: absolute;;
+  position: absolute;
   background-color: blue;
 }
 
 .player {
   background-color: red;
   position: absolute;
-  z-index: 2;
+  top: 400px;
 }
