@@ -1,0 +1,25 @@
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+
+.background{
+	width: 1000px;
+	height: 500px;
+	background-color: yellow;
+	position: relative;
+	
+
+}
+
+.box {
+	position: absolute;
+	background-color: red;
+	
+
+}
+
+.green {
+	background-color: green;
+}

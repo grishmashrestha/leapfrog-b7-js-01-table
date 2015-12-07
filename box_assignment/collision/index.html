@@ -1,0 +1,47 @@
+<html>
+	<head>
+		<title></title>
+		<link href="style.css" rel="stylesheet" />
+	</head>
+	
+	<body>
+		<div class="background"></div>
+		<script src="Box.js"></script>
+		<script type="text/javascript">
+
+		numBox = 7;
+		boxArrays = new Array(); //stores the box objects;
+
+		for(var i = 0 ; i < numBox; i++){
+			var box = new Box();
+			var parent = document.getElementsByTagName("body")[0];
+			box.addClass("box");
+			box.appendTo(parent);
+			box.initializeValue(70*i+30,60*i,1,1,5+10*i,5+15*i,i); //posx,posy,dirx,diry,width,height,identity
+			boxArrays[i] = box;
+		}
+
+		function ballmoving(){
+			for(var i = 0 ; i<numBox;i++){
+			//boxArrays[i].moveBox1();  //moves the box
+
+			for(var j = 0 ; j<numBox; j++){
+				if(i!=j){
+					var a = boxArrays[i].collisionTest(boxArrays[j]);
+					if(a != 0 ){
+						boxArrays[j].dirx *= -1;
+						boxArrays[j].diry *= -1;
+						boxArrays[j].moveBox1();
+					}
+				}
+			}
+			boxArrays[i].moveBox1();
+
+			//boxArrays[i].collisionTest(i); //collison test;
+			}
+		}
+		setInterval(ballmoving,1);
+
+		</script>
+	</body>
+</html>

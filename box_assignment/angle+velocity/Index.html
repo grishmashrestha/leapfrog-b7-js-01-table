@@ -1,0 +1,75 @@
+<html>
+	<head>
+		<title></title>
+		<link href="css/style.css" rel="stylesheet" />
+	</head>
+	<body>
+			<div  class="background">
+				<div class="mainframe"> </div>
+				<div class="formbackground">
+					<strong> Set the angle value and velocity </strong>
+					<form id="myForm" action="">
+						Angle <input type="text" name="fname" value=""><br>
+  						velocity <input type="text" name="lname" value=""><br>
+  						<input type="button" value="Run" onclick="frameFunction()">
+					</form> 
+				</div>
+			</div>
+
+			<script src="js/Box.js"></script>
+			<script src="js/Event.js"></script>
+			<script type="text/javascript">
+
+			numBox = 5; //number of boxes on the top
+			boxArrays = new Array(); //holds the box objects
+
+			for(var i = 0 ; i < numBox; i++){
+				var box = new Box();
+				var parent = document.getElementsByTagName("body")[0];
+				box.addClass("box");
+				box.appendTo(parent);
+				box.initializeValue(195*i+50,50+50*i,1,1,40,40,1,0,i); //posx posy dirx diry boxwidth boxheight ,slope, velocity ,idenitity;
+				boxArrays[i] = box;
+			}
+
+			//creating for the main green box
+
+			var box = new Box();
+			var parent = document.getElementsByTagName("body")[0];
+			box.addClass("box green");
+			box.appendTo(parent);
+			box.initializeValue(0,450,1,-1,40,40,1,0,i); //posx posy dirx diry boxwidth boxheight ,slope, velocity ,idenitity;
+			boxArrays[numBox] = box;
+
+
+			console.log(boxArrays);
+
+
+			function ballmoving(){
+			for(var i = 0 ; i<=numBox;i++){
+			//boxArrays[i].moveBox1();  //moves the box
+
+				for(var j = 0 ; j<=numBox; j++){
+					if(i!=j){
+						var a = boxArrays[i].collisionTest(boxArrays[j]);
+						if(a != 0 ){
+
+						console.log('collision detected between the box ',i, ',' ,j);
+						boxArrays[j].dirx *= -1;
+						boxArrays[j].diry *= -1;
+						boxArrays[j].velocity = 1;
+						boxArrays[j].moveBox1();
+						boxArrays[i].velocity = 1;
+						boxArrays[i].moveBox1();
+						}
+					}
+				}
+				boxArrays[i].moveBox1();
+			}
+		}
+
+			setInterval(ballmoving,1);
+
+			</script>
+	</body>
+</html>
