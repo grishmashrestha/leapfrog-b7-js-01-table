@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<style>
+*{
+	padding:0px;
+	margin:0px;
+}
+
+#mainbody{
+	background-color:red;
+	width:800px;
+	height:600px;
+	border: 1px solid green;
+	position: relative;
+}
+</style>
+<div id="mainbody">
+
+</div>
+<script type="text/javascript">
+// var y = 0;
+// var x = 0;
+var n=4;
+var divArray = [];
+var mainbody = document.getElementById('mainbody');
+function createDiv(){
+	for(var i=0;i<n;i++){
+		var div = document.createElement('DIV');
+		div.id='div'+i.toString();
+		console.log("div.id = ", div.id);
+		//var divpose = document.getElementById(i);
+		var x = Math.floor((Math.random()*740)+0);
+		var y = Math.floor((Math.random()*540)+0);
+		var dx=5;
+		var dy=5;
+		div.style['left'] = x + 'px';
+		div.style['top'] = y + 'px';
+		div.style['width'] = '50px';
+		div.style['height'] = '50px';
+		div.style['border'] = '1px solid blue';
+		div.style['background-color'] = 'yellow';
+		div.style['position'] = 'absolute';
+		divArray.push(div.id,x,y,dx,dy);
+		mainbody.appendChild(div);
+	}
+}
+createDiv();
+
+function hitTest(xf,yf,xs,ys,w,h){
+  	if ((ys+h) <= yf) return false;
+  	else if(xs >= (xf+w)) return false;
+  	else if(ys >= (yf+h)) return false;
+  	else if((xs+w) <= xf) return false;
+  	return true;
+  }
+ function bounce(){
+ 	for (var i = 0; i < 5*n; i+=5) {
+  		for (var j = i+1; j < 5*n; j+=5)
+  			{
+  				if (hitTest(divArray[i+1],divArray[i+2],divArray[j+1],divArray[j+2],50,50) == true) {
+  					/*dx[i] = -dx[i];
+  					dx[j] = -dx[j];
+  					dy[i] = -dy[i];
+  					dy[j] = -dy[j];*/
+
+  					divArray[i+3] = -divArray[i+3];
+  					divArray[j+3] = -divArray[j+3];
+  					divArray[i+4] = -divArray[i+4];
+  					divArray[j+4] = -divArray[j+4];
+
+  					/*x[i] += dx[i];
+  					y[i] += dy[i];
+  					x[j] += dx[j];
+  					y[j] += dy[j];*/
+
+  					divArray[i+1]+=divArray[i+3];
+  					divArray[i+2]+=divArray[i+4];
+  					divArray[j+1]+=divArray[j+3];
+  					divArray[j+2]+=divArray[j+4]
+
+  					var divposition1 = document.getElementById(divArray[i]);
+  					var divposition2 = document.getElementById(divArray[j]);
+					divposition1.style.left = divArray[i+1] + 'px';
+					//console.log("divposition.style.left ", divposition.style.left);
+					divposition1.style.top = divArray[i+2] + 'px';
+					divposition2.style.left = divArray[j+1] + 'px';
+					//console.log("divposition.style.left ", divposition.style.left);
+					divposition2.style.top = divArray[j+2] + 'px';
+
+
+
+  					/*divBox[i].style.left = x[i] + 'px';
+  					divBox[i].style.top = y[i] + 'px';
+
+  					divBox[j].style.left = x[j] + 'px';
+  					divBox[j].style.top = y[j] + 'px';*/
+  				}
+  			}
+  		}
+}
+
+function ghumaide() {
+	for(var i=0;i<n*5;i+=5){
+		if(divArray[i+1]<=0 || divArray[i+1]>740)
+			divArray[i+3]=-divArray[i+3];
+		//console.log("divArray[i+1] : ",divArray[i+1]);
+		if(divArray[i+2]<=0 || divArray[i+2]>540)
+			divArray[i+4]=-divArray[i+4];
+		divArray[i+1]+=divArray[i+3];
+		divArray[i+2]+=divArray[i+4];
+		//console.log("divArray[i+2] : ",divArray[i+2]);
+		var divposition = document.getElementById(divArray[i]);
+		divposition.style.left = divArray[i+1] + 'px';
+		console.log("divposition.style.left ", divposition.style.left);
+		divposition.style.top = divArray[i+2] + 'px';
+		//bounce();
+	}
+}
+
+	/*if(x1<=0||x1>740)
+		dx1=-dx1;
+	if(y1<=0||y1>540)
+		dy1=-dy1;
+	if(x2<=0||x2>740)
+		dx2=-dx2;
+	if(y2<=0||y2>540)
+		dy2=-dy2;
+
+	if(((x2-x1)*(x2-x1)+(y2-y1)*(y2-y1))<=5000)
+	{
+		if(dx1==-dx2)
+		{
+			var temp=dx1;
+			dx1=dx2;
+			dx2=temp;
+		}
+		if(dy1==-dy2)
+		{
+			var temp=dy1;
+			dy1=dy2;
+			dy2=temp;
+		}
+	}
+
+	var divone = document.getElementById('divone');
+	var divtwo = document.getElementById('divtwo');
+
+	divone.style.left = x1 + 'px';
+	divone.style.top = y1 + 'px';
+	divtwo.style.left = x2 + 'px';
+	divtwo.style.top = y2 + 'px';
+}*/
+setInterval(ghumaide, 30);
+</script>
+</body>
+</html>

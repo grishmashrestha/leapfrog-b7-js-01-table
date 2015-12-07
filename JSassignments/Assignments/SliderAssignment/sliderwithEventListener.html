@@ -1,0 +1,227 @@
+<html>
+<head>
+<title>Slider 1</title>
+</head>
+
+<body>
+<style>
+* {
+	margin: 0px;
+	padding: 0px;
+}
+.clr:before, .clr:after{
+	content: " ";
+	display: table;
+}
+.clr:after{
+	clear:both;
+}
+div.slider {
+	width:900px;
+	overflow: hidden;
+	border: 1px solid red;
+	position: relative;
+}
+div.slider div.sliderLong {
+	width: 10000px;
+	border: 1px solid blue;
+}
+div.slider img {
+	width:900px;
+	height:400px;
+	margin-right: -5px;
+}
+div #iconleft img{
+	width:50px;
+	height: 50px;
+	position: absolute;
+	top: 200px;
+	left: 0px;
+	/*float: left;*/
+}
+div #iconright img{
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	top: 200px;
+	left: 850px;
+	/*float: right;*/
+}
+#statusholder{
+	/*border: 1px solid red;*/
+	position: absolute;
+	z-index: 10;
+}
+#statusholder ul{
+  width:100%;
+  height: auto;
+}
+#statusholder ul li{
+  float: left;
+  list-style: none;
+  padding-left: 5px;
+}
+</style>
+
+<div class="slider">
+	<div id="iconleft">
+		<img src="images/leftArrow.png" alt="" />
+	</div>
+	<div id="iconright">
+		<img src="images/rightArrow.png" alt="" />
+	</div>
+	<div id="statusholder">
+	</div>
+	<div id ="slide" class="sliderLong">
+		<img src="images/img1.jpg" alt="" />
+		<img src="images/img2.jpg" alt="" />
+		<img src="images/img3.jpg" alt="" />
+		<img src="images/img4.jpg" alt="" />
+		<img src="images/img5.jpg" alt="" />
+	</div>
+</div>
+<script type="text/javascript" src="animator.js"></script>
+<script>
+var imgWidth = 900;
+
+/*var marginSubtract=0;
+function slideShow(){
+	var timing = setInterval(slide,10);
+	function slide(){
+		marginSubtract+=15;
+		sliderLong.style.marginLeft = -1 * marginSubtract;
+		if(marginSubtract%900 == 0)
+		{
+			clearInterval(timing);
+		}
+		if(marginSubtract>=1800){
+			console.log(marginSubtract);
+			marginSubtract = 0;
+
+		}
+	}
+}
+setInterval(slideShow,2000);
+*/	
+	//var active=1;
+	 var slider = document.getElementsByClassName("sliderLong")[0];
+	 var sliderLong = slider.children[0];
+	 var slides = slider.children;
+	 var n = slides.length;
+
+	var marginSubtract = 0;
+	var initialMargin = 0;
+	//var n=5;
+	//var animator = new Animator(sliderLong);
+
+	function createNavigationBar(){
+		var ul=document.createElement('UL');
+		ul.style.width = '100%';
+		ul.style.height = 'auto';
+		ul.style['list-style'] = 'none';
+
+		for(var i=0;i<n;i++){
+			var li=document.createElement('li');
+			var listdiv=document.createElement('DIV');
+			//listdiv.id = 'button' + i.toString();
+			listdiv.id = i;
+			listdiv.addEventListener('click',function(){
+				marginSubtract = this.id * imgWidth;
+				var pos=marginSubtract/imgWidth;
+				changeState(pos,n);
+				animator.animate("margin-left", -marginSubtract, 200);
+			});
+			console.log("the value of i: ", i);
+			console.log("listdiv.id :", listdiv.id); 
+			listdiv.style.width = '20px';
+			listdiv.style.height = '20px';
+			if(i==0)
+				listdiv.style.background = 'red';
+			else
+				listdiv.style.background = 'green';
+			listdiv.style.float = 'left';
+			listdiv.style['border-radius'] = '50%';
+			listdiv.style['margin-left'] = '5px';
+			listdiv.style['margin-right'] = '5px';
+			li.appendChild(listdiv);
+			ul.appendChild(li);
+		}
+		var statusholder = document.getElementById('statusholder');
+		statusholder.style.top = '350px';
+		statusholder.style.left = (imgWidth-(30*n))/2 ;
+		statusholder.appendChild(ul);
+		console.log("appendChild", statusholder.appendChild(ul));
+	}
+	
+	/*console.log("id aako chha ki chhaina : ",document.getElementById("button1"));
+	var buttonclick=document.getElementById(1);
+	buttonclick.onclick=function(){
+		marginSubtract=900;
+		animator.animate("margin-left", -marginSubtract, 200);
+	}*/
+	function changeState(current,length){
+    var statusholder = document.getElementById("statusholder");
+    var navul = statusholder.children[0];
+    var navlist = navul.children;
+    
+    for (var i = 0; i < length; i++) {
+	  if (i == (current)) {
+        navlist[i].children[0].style.background = 'red';
+      }
+      else{
+         navlist[i].children[0].style.background = 'green';
+      }
+    }
+  }
+	
+	createNavigationBar();
+	
+	
+	var slide = document.getElementById("slide");
+	var animator = new Animator(slide);
+
+	var leftclick = document.getElementById("iconleft");
+	leftclick.onclick = function() {leftClickFunction()};
+	
+	function leftClickFunction() {
+    	if(marginSubtract > initialMargin)
+		{
+			marginSubtract = marginSubtract - (marginSubtract % imgWidth);
+			marginSubtract-=imgWidth;
+		}
+		var pos=marginSubtract/imgWidth;
+		changeState(pos,n);
+		animator.animate("margin-left", -marginSubtract, 1000);
+	}
+	
+	var rightclick = document.getElementById("iconright");
+	rightclick.onclick = function() {rightClickFunction()};
+	
+	function rightClickFunction() {
+    	/*if(marginSubtract < (n-1)*imgWidth){
+			marginSubtract = marginSubtract - (marginSubtract%imgWidth);
+			marginSubtract+=imgWidth;
+		}*/
+		animator.finish("margin-left");
+		if(marginSubtract < (n-1)*imgWidth)
+			marginSubtract+=imgWidth;
+		var pos=marginSubtract/imgWidth;
+		changeState(pos,n);
+		animator.animate("margin-left", -marginSubtract, 1000);
+	}
+	function slideShow(){
+		marginSubtract = marginSubtract < (n-1)*imgWidth ? marginSubtract+imgWidth : initialMargin;
+		var pos=marginSubtract/imgWidth;
+		changeState(pos,n);
+		animator.animate("margin-left", -marginSubtract, 1000);
+	}
+
+	setInterval(slideShow,3000);
+	//slideShow();
+</script>
+</body>
+</html>
+
+
+
+

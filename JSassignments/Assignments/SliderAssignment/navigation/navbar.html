@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="statusholder">
+	
+</div>
+<script type="text/javascript">
+/*	var ul = document.createElement('UL');
+	ul.style.width = '100%';
+	ul.style.height = 'auto';
+	ul.style['list-style'] ="none";
+
+	for (var i = 0; i < 5; i++) {
+		var li1 = document.createElement('li');
+		var div1 = document.createElement('DIV');
+		div1.style.width = '20px';
+		div1.style.height = '20px';
+		div1.style.background = 'black';
+		div1.style.float = 'left';
+		div1.style['border-radius'] ='10px';
+		div1.style['margin-left'] = '10px';
+		li1.appendChild(div1);
+		ul.appendChild(li1);
+	}
+	var myid = document.getElementById('myId');
+	myid.appendChild(ul);
+
+	var navbar = document.getElementById("myId");
+  console.log(navbar);
+  var navul = navbar.children[0];
+  var navlist = navul.children;
+  console.log(navlist);
+  navlist[1].children[0].style.background = 'red';
+*/
+var ul=document.createElement('UL');
+ul.style.width = '100%';
+ul.style.height = 'auto';
+ul.style['list-style'] = 'none';
+
+for(var i=0;i<8;i++){
+	var li=document.createElement('li');
+	var listdiv=document.createElement('DIV');
+	listdiv.style.width = '20px';
+	listdiv.style.height = '20px';
+	listdiv.style.background = 'green';
+	listdiv.style.float = 'left';
+	listdiv.style['border-radius'] = '50%';
+	listdiv.style['margin-left'] = '10px';
+	li.appendChild(listdiv);
+	ul.appendChild(li);
+}
+var statusholder = document.getElementById('statusholder');
+
+statusholder.appendChild(ul);
+
+var navul=statusholder.children[0];
+var navlist = navul.children;
+navlist[5].children[0].style.background = 'red';
+
+</script>
+</body>
+</html>
