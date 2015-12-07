@@ -18,14 +18,24 @@
   height: 800px;
   width: 600px;
   overflow: hidden;
-  position: relative;
-  border: 1px solid black
 }
 
 .container {
-  height: 100000000px;
+  height: 100000px;
   width: 600px;
   float: left;
-  background-color: #000;
-  background: url('../images/bk.png') repeat-y; 
+  background: url('../images/bk.png') repeat-y;
+  position: relative;
+  top: -99200px;
+}
+
+.baddie {
+  position: absolute;;
+  background-color: blue;
+}
+
+.player {
+  background-color: red;
+  position: absolute;
+  z-index: 2;
 }
