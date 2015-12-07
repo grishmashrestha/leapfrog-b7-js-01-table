@@ -13,54 +13,16 @@
 		<div class="slide"><img src="images/img4.jpg" alt=""/></div>
 		<div class="slide"><img src="images/img5.jpg" alt=""/></div>
 	</div>
-
+	<div class="imageLeft">
+		<img src="images/slider-lefto.png" alt="left"onmouseover="leftMouseOver()" onmouseout="leftMouseOut()"/>
+	</div>
+	<div class="imageRight">
+		<img src="images/slider-righto.png" alt="right" onmouseover="rightMouseOver()" onmouseout="rightMouseOut()" />
+	</div>
+	<div class = "bottom-bullets">
+	</div>
 </div>
 <script type="text/javascript" src="js/animator.js"></script>
-<script type="text/javascript">
-var longSlider = document.getElementsByClassName("longImageWrapper")[0];
-var animator = new Animator(longSlider);
-var slides = longSlider.children;
-var counter = 0;
-
-function slide(){
-	counter++;
-	// if(active == slides.length){
-	// 	active=1;
-	// 	longSlider.style.marginLeft='0px';
-	// 	addMargin=0;
-	// }
-	// function slideMargin(){
-	// 	longSlider.style.marginLeft = addMargin + 'px';
-	// 	addMargin -=200;
-	// }
-	// var insideInterval = setInterval(slideMargin,100);
-	// setTimeout(function(){ clearInterval(insideInterval);},2000)
-	// active++;
-	animator.animate("margin-left",-1000,1000);
-	
-	if(counter == slides.length ){
-		//setTimeout(slide,2000);
-		console.log("hello");
-		animator.animate("margin-left",(1000*(counter-1)),1000);
-		counter = 0;
-		}
-		console.log("counter",counter);			
-	// if(addMargin%1000 == 0){
-	// 	clearInterval(interVal);
-	// 	if(addMargin==(-1000*(slides.length-1))){
-			
-	// 		addMargin=0;
-	// 	}
-	// 	setTimeout(intervalSetter,1000);
-	// 	console.log(longSlider.style.marginLeft)
-	// 	console.log(addMargin);
-	// 	}
-	// 		addMargin -= 50;
-	// 		var ml = addMargin + 50 +'px';
-	// 		longSlider.style.marginLeft = ml;
-}
-var id = setInterval(slide, 2000);
-
-</script>
+<script type="text/javascript" src="js/slider.js"></script>
 </body>
 </html>

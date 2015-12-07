@@ -6,6 +6,7 @@
 	width:1000px;
 	overflow: hidden;
 	margin: 0 auto;
+	position: relative;
 }
 .longImageWrapper{
 	width: 10000px;
@@ -17,4 +18,31 @@
 .slide img{
 	width: 1000px;
 	height: 400px;
+}
+.imageLeft img{
+	position: absolute;
+	top:150px;
+	left: 0px;
+}
+.imageRight img{
+	position: absolute;
+	top:150px;
+	left:950px;
+}
+.bottom-bullets{
+	position: absolute;
+	bottom:20px;
+	width: 1000px;
+	text-align: center;
+}
+.bullet{
+	background: url("../images/dot.png") no-repeat;
+	display: inline-block;
+	width:11px;
+	height: 11px;
+	margin-left: 2px;
+	margin-right:2px;
+}
+.bullet.active{
+	background:  url("../images/dot-active.png") no-repeat; 
 }

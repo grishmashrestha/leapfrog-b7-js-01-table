@@ -1,6 +1,5 @@
 function Animator(element) {
 	this.el = element;
-
 	this.animate = function(cssProperty, value, duration) {
 		var style = window.getComputedStyle(element);
 		var initial = style.getPropertyValue(cssProperty);
