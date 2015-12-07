@@ -156,32 +156,32 @@
 
 
 
-			table=document.createElement("TABLE");
-			tr=document.createElement("TR");
-			tr.style.border="2px solid #fff";
+			var table=document.createElement("TABLE");
+			var tr=document.createElement("TR");
+			
 
-			td=document.createElement("TD");
-			t=document.createTextNode("S.N.");
+			var td=document.createElement("TD");
+			var t=document.createTextNode("S.N.");
 			td.appendChild(t);
 			tr.appendChild(td);
 
-			td2=document.createElement("TD");
-			t2=document.createTextNode("Name");
+			var td2=document.createElement("TD");
+			var t2=document.createTextNode("Name");
 			td2.appendChild(t2);
 			tr.appendChild(td2);
 			
-			td3=document.createElement("TD");
-			t3=document.createTextNode("College");
+			var td3=document.createElement("TD");
+			var t3=document.createTextNode("College");
 			td3.appendChild(t3);
 			tr.appendChild(td3);
 
-			t4=document.createTextNode("Roll No.");
-			td4=document.createElement("TD");
+			var t4=document.createTextNode("Roll No.");
+			var td4=document.createElement("TD");
 			td4.appendChild(t4);
 			tr.appendChild(td4);
 
-			t5=document.createTextNode("Course");
-			td5=document.createElement("TD");
+			var t5=document.createTextNode("Course");
+			var td5=document.createElement("TD");
 			
 			td5.appendChild(t5);
 			tr.appendChild(td5);
@@ -190,30 +190,30 @@
 
 			for(var a=0;a<data.length;a++)
 			{
-				tr=document.createElement("TR");
+				var tr=document.createElement("TR");
 				
-				td=document.createElement("TD");
+				var td=document.createElement("TD");
 				t=document.createTextNode(a+1);
 				td.appendChild(t);
 				tr.appendChild(td);
 
-				td2=document.createElement("TD");
-				t2=document.createTextNode(data[a].name);
+				var td2=document.createElement("TD");
+				var t2=document.createTextNode(data[a].name);
 				td2.appendChild(t2);
 				tr.appendChild(td2);
 				
-				td3=document.createElement("TD");
-				t3=document.createTextNode(data[a].college);
+				var td3=document.createElement("TD");
+				var t3=document.createTextNode(data[a].college);
 				td3.appendChild(t3);
 				tr.appendChild(td3);
 
-				t4=document.createTextNode(data[a].roll);
-				td4=document.createElement("TD");
+				var t4=document.createTextNode(data[a].roll);
+				var td4=document.createElement("TD");
 				td4.appendChild(t4);
 				tr.appendChild(td4);
 
-				t5=document.createTextNode(data[a].course);
-				td5=document.createElement("TD");
+				var t5=document.createTextNode(data[a].course);
+				var td5=document.createElement("TD");
 				
 				td5.appendChild(t5);
 				tr.appendChild(td5);
@@ -221,6 +221,7 @@
 				table.appendChild(tr);
 			}
 			document.body.appendChild(table);
+			table.setAttribute('border','');
 		</script>
 	</body>
 

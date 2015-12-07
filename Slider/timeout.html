@@ -1,0 +1,22 @@
+<html>
+<head>
+</head>
+<body>
+<script>
+var fn1 = function() {
+	console.log("inside fn1");	
+};
+var timeoutId = setTimeout(fn1, 3000);
+// clearTimeout(timeoutId);
+
+var fn2 = function() {
+	console.log("inside fn2");
+}
+var intervalId = setInterval(fn2, 1000);
+
+setTimeout(function() {
+	clearInterval(intervalId);
+}, 5000);
+</script>
+</body>
+</html>

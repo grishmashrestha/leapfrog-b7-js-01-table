@@ -1,0 +1,193 @@
+<html>
+<head>
+<title>Slider 1</title>
+</head>
+<link rel='stylesheet' href="css/reset.css" />
+<body>
+<style>
+* {
+	margin: 0px;
+	padding: 0px;
+}
+div.slider {
+	
+	overflow: hidden;
+	/*border: 1px solid red;*/
+	position:relative;
+}
+div.slider div.sliderLong {
+	width: 10000px;
+	/*border: 1px solid blue;*/
+	margin-left:0px;
+}
+div.slider img {
+	/*float:left;
+	display: inline-block;/*for eliminating gap between images but is not compatible*/
+margin: 0;
+padding: 0;
+border: 0;
+	height:500px;
+}
+.wide{width:900px;}
+.seeker-container{position:absolute;bottom:25px;}
+
+#left{position:absolute;z-index: 2;background:url(images/arrow-left-n.png) 0px 0px no-repeat;width:30px;height:60px; left:10px;top:0;
+    bottom:0;
+    margin-top:auto;
+    margin-bottom:auto;}
+#right{position:absolute;background:url(images/arrow-right-n.png) 0px 0px no-repeat;width:30px;height:60px;
+	right:10px;top:0;
+    bottom:0;
+    margin-top:auto;
+    margin-bottom:auto;}
+#left:hover{background:url(images/arrow-left.png) 0px 0px no-repeat;}
+#right:hover{background:url(images/arrow-right.png) 0px 0px no-repeat;}
+.box {
+	position: absolute; left: 900px; top: 20px;z-index:1;
+	width:100px; height: 100px; border: 1px solid red;
+}
+.seeker{position:relative;text-align:center;}
+.bullet-container{}
+.bullet-container ul{list-style:none;margin:0 auto;}
+.bullet-container ul li{display:inline-block; padding:5px; background:url(images/dot.png) 0px 0px no-repeat; width:10px;height:10px; }
+.bullet-container ul li.active{background:url(images/dot-active.png) 0px 0px no-repeat;}
+/*.bullet-container ul li a{}*/
+
+</style>
+
+<div class="slider wide ">
+<div id="left"></div>
+	<div id="right"></div>
+	
+	<div class="sliderLong">
+		<img src="images/1.jpg" class="wide" alt="" />
+		<img src="images/2.jpg" alt="" class="wide" />
+		<img src="images/3.jpg" alt="" class="wide" />
+		<img src="images/4.jpg" alt="" class="wide" />
+		<img src="images/5.jpg" alt="" class="wide" />
+	</div>
+	<div class="seeker-container wide">
+	<div class='seeker'><div class="bullet-container"><ul class="bullets"></ul></div></div>
+	</div>
+<div id="start" style="position:absolute; top:50px;">start</div>
+<div id="stop">stop</div>
+</div>
+
+
+<script type="text/javascript" src="animator.js"></script>
+
+<script>
+
+	var slider = document.getElementsByClassName("sliderLong")[0];
+	var sliderLong = slider.children[0];
+	var animator = new Animator(sliderLong);
+	console.log(sliderLong);
+	var active=1; 
+	var slides=slider.children;
+	var imgWidth=sliderLong.width;
+	var bulletcontainer=document.getElementsByClassName('bullets')[0];
+	var di=[];
+	var a=1;
+	
+	var duration=500;
+	for(var sp =1;sp<=slides.length;sp++){
+		 	di[sp]=document.createElement('li');
+		 	var t2=document.createTextNode(' ');
+			di[sp].id=sp;
+			di[sp].addEventListener("click",function(){
+				var mar = parseInt(window.getComputedStyle(sliderLong).getPropertyValue('margin-left'));
+				if(mar%imgWidth==0){
+					animator.animate('margin-left',(this.id-1)*-imgWidth,duration);
+					active=this.id;
+					bulletslider();
+				}
+				});
+			di[sp].appendChild(t2);
+
+		 	bulletcontainer.appendChild(di[sp]);
+	}
+	//console.log(sliderLong);
+var right=document.getElementById('right');
+var left=document.getElementById('left');
+right.addEventListener('click',function(){
+	var mar = parseInt(window.getComputedStyle(sliderLong).getPropertyValue('margin-left'));
+	console.log(mar);
+	if(active<slides.length && mar%imgWidth==0){
+		//active= active >= slides.length? active=1:++active;
+		active++;
+		animator.finish(5,'margin-left');
+		animator.stop();
+		animator.animate('margin-left',(active-1)*-imgWidth,duration);
+		bulletslider();
+
+		//console.log('from right- ',active);
+	}
+});
+var sliderid;
+
+left.addEventListener('click',function(){
+	var mar = parseInt(window.getComputedStyle(sliderLong).getPropertyValue('margin-left'));
+	console.log(mar);
+	if(active>1 && mar%imgWidth==0){// && mar%imgWidth>=-10){
+		console.log('inside out');
+		animator.stop();
+
+		active= active == 1? active=slides.length:--active;	
+		animator.animate('margin-left',(active-1)*-imgwidth,duration);
+		console.log('from left- ',active);
+			bulletslider();
+
+	}
+	
+	
+});
+
+function slide(){
+	active= active == slides.length? active=1:++active;
+	var ml=(active-1)*-1*imgWidth;
+	animator.animate('margin-left',ml,duration);
+	bulletslider();
+}
+function bulletslider(){
+	for(var a =1;a<=slides.length;a++)
+	{
+		document.getElementById(a).className = "";
+		
+	}
+	document.getElementById(active).className="active";
+}
+
+var startbutton=document.getElementById('start');
+var stopbutton=document.getElementById('stop');
+
+function startfunction(){
+		sliderid=setInterval(slide,5000);
+		stopbutton.style.display='block';
+		startbutton.style.display='none';
+			bulletslider();
+
+		console.log("slider started");
+}
+function stopfunction(){
+		clearInterval(sliderid);
+		stopbutton.style.display='none';
+		startbutton.style.display='block';
+		console.log("slider stopped");
+}
+
+
+startbutton.addEventListener('click',startfunction);
+
+
+stopbutton.addEventListener('click',stopfunction);
+stopbutton.style.display='none';
+startfunction();
+//slide();
+//setTimeout(function(){animator.animate('margin-left',-1800,1000)},2000);
+</script>
+</body>
+</html>
+
+
+
+

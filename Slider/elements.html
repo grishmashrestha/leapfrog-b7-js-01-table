@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div class="aaa">
+	<div id="iii">Div aaa with iii</div>
+	<p class="aaa bbb">
+		p aaa bbb
+	</p>
+	<p class="bbb">
+		p bbb
+	</p>
+</div>
+
+<script type="text/javascript">
+var iii = document.getElementById("iii");
+iii.style.borderBottom = '1px solid blue';
+//iii.style.display = 'none';
+console.log(iii);
+
+console.log("this should return empty", document.getElementById('jptId'));
+
+
+var aaa = document.getElementsByClassName("aaa");
+console.log("class aaa : ", aaa);
+
+var aaaBhitraKoAaa = aaa[0].getElementsByClassName("aaa");
+console.log("class aaa -> aaa : ", aaaBhitraKoAaa);
+
+var divTags = document.getElementsByTagName("div");
+console.log("divs : " , divTags);
+
+for (var i=0; i<divTags.length; i++) {
+	var div = divTags[i];
+	div.style.border = "1px dashed green";
+}
+
+</script>
+</body>
+</html>

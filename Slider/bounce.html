@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bounce</title>
+</head>
+<link rel="stylesheet" href="css/bounce.css"/>
+<body>
+<div id="background">
+<div class='obs'></div>
+<div class='obs'></div>
+
+
+</div>
+<script src="animator.js" type="text/javascript"></script>
+<script>
+	var obs=document.getElementsByClassName('obs')[0];
+	var obs2=document.getElementsByClassName('obs')[1];
+
+	console.log(obs.className);
+	var intervalId;
+	var animator = new Animator(obs);
+	var animator2 = new Animator(obs2);
+	animator.init();
+	animator2.init();
+	//console.log(animator2.el);
+	function move(){
+		animator.animateOne('left','top');
+		animator2.animateOne('left','top');
+		
+		if(animator.hitTest(obs2))
+		{
+			animator.velo_x*=-1;
+			console.log(animator.velo_x);
+		}
+
+
+		//animator.animateBatch(['left','top']);
+		// if(animator.hitTest)
+		// {
+		// 	clearInterval(intervalId);
+		// }
+
+	}
+	
+	var intervalId=setInterval(move,30);
+
+
+
+
+
+
+</script>
+</body>
+</html>

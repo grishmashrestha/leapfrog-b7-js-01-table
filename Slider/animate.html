@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<style>
+#div1 {
+	border: 1px solid red;
+	background-color: yellow;
+	width:100px;
+	height: 100px;
+	position: absolute;
+}
+</style>
+<div id="div1">
+</div>
+<script type="text/javascript">
+var y = 0;
+var x = 0;
+
+function ghumaide() {
+	var div1 = document.getElementById('div1');
+	y += 10;
+	x += 25;
+
+	div1.style.left = x + 'px';
+	//div1.style.top = y + 'px';
+}
+setInterval(ghumaide, 30);
+</script>
+</body>
+</html>
