@@ -30,12 +30,26 @@ function Player() {
       player.getAttribute("class") + " " + className);
   }
 
+  // getter and setter methods 
   this.getLeft = function() {
     return left;
+  }
+
+  this.getTop = function() {
+    return top;
+  }
+
+  this.getWd = function() {
+    return wd;
+  }
+
+  this.getHt = function() {
+    return ht;
   }
 
   this.setLeft = function(l) {
     left = l;
   }
+
 
 }
