@@ -1,0 +1,53 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+div.slider {
+	position: relative;
+	margin: 0 auto;
+	width:960px;
+	overflow: hidden;
+}
+div.left-arrow{
+	height: 30px;
+	width: 40px;
+	background: url(../images/left-arrow.png);
+	background-repeat: no-repeat;
+	position: absolute;
+	top:50%;
+	left: 1%;
+	z-index: 1;
+}
+div.right-arrow{
+	height: 30px;
+	width: 30px;
+	background: url(../images/right-arrow.png);
+	background-repeat: no-repeat;
+	position: absolute;
+	top:50%;
+	right: 1%;
+	z-index: 1;
+}
+div.pager{
+	position: absolute;
+	top:95%;
+	left:45%;
+}
+div.pager li{
+	float: left;
+	padding: 20px;
+	background: url(../images/bullet-inactive.png);
+	background-repeat: no-repeat;
+}
+div.pager li.active{
+	background: url(../images/bullet-active.png);
+	background-repeat: no-repeat;
+}
+div.slider-long {
+	width: 10000px;
+}
+
+div.slider img {
+	width:958px;
+	height:314px;
+}

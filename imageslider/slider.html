@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/slider.css">
+		
+	</head>
+
+	<body>
+		<div class="slider">
+            <div class="left-arrow"></div>
+			<div class="right-arrow"></div>
+			<div class="pager">
+				<ul class="bullet">
+				</ul>
+			</div>
+			<div class="slider-long">
+				<img src="images/image1.jpg" alt="" />
+				<img src="images/image2.jpg" alt="" />
+				<img src="images/image3.jpg" alt="" />
+                <img src="images/image4.jpg" alt="" />
+			</div>
+		</div>
+		<script type="text/javascript" src="js/animator.js"></script>
+<script type="text/javascript">
+    var active = 1;
+    var ml=0;
+    var slider = document.getElementsByClassName('slider-long')[0];
+    var sliderLong = slider.children[0];
+    var slides = slider.children;
+    var imageWidth = 960;
+    var animator = new Animator(sliderLong);
+    var bullet = document.getElementsByClassName('bullet')[0];
+    //pager click and color indexing
+	for(var i = 1; i<=slides.length; i++){
+		var li = document.createElement('li');
+		li.id = i;
+		li.addEventListener('click', function(){
+			active = this.id;
+			ml = (imageWidth * (active-1) * -1);
+			animator.animate("margin-left",ml, 1000);
+			bulletChanger();
+		});
+	bullet.appendChild(li);
+}
+
+//change the page bullets
+function bulletChanger(){
+	for(var i=1 ; i<=slides.length; i++){
+		document.getElementById(i).className= '';
+	}
+	document.getElementById(active).className = 'active';
+}
+
+function slide() {
+	active = active == slides.length ? active = 1 : ++active;
+	ml = (imageWidth * (active-1) * -1);
+	animator.animate("margin-left",ml, 1000);
+	bulletChanger();
+	}
+    bulletChanger();
+setInterval(slide, 3000);
+    
+//left button action
+var prevBtn = document.getElementsByClassName('left-arrow')[0];
+prevBtn.addEventListener('click', function(){
+//	clearInterval(slide);
+    animator.finish();
+	active = active == 1 ? active = slides.length: --active;
+	ml = (imageWidth * (active-1) * -1);
+	animator.animate("margin-left", ml, 1000);
+	bulletChanger();
+});
+    
+//right button action
+var nextBtn = document.getElementsByClassName('right-arrow')[0];
+nextBtn.addEventListener('click', function(){
+	active = active == slides.length ? active = 1 : ++active;
+	ml = (imageWidth * (active-1) * -1);
+	animator.animate("margin-left",ml, 1000);
+	bulletChanger();
+});
+</script>
+</body>
+</html>
