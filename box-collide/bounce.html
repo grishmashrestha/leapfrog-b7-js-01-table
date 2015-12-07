@@ -1,0 +1,80 @@
+<DOCTYPE html>
+<head>
+<style>
+
+* {
+	padding: 0px;
+	margin: 0px;
+}
+
+.box {
+	width: 40px;
+	height: 40px;
+
+	background-color: red;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+#divMain{
+height:600px;
+width:800px;
+position:relative;
+margin-left:20px;
+border:2px solid black;
+}
+
+.green {
+	background-color: green;
+}
+.formWrapper
+{
+position:absolute;
+top:600px;
+left:500px;
+
+
+}
+</style>
+</head>
+<body>
+<div id="divMain" onclick="mouseEvent()" onmousedown="MouseDown()" onmouseup="MouseUp()"></div>
+<div id="formWrapper">
+
+Angle:<input id="Angle" type="text"  name="Angle" style="width:50px">
+Velocity:<input id="Velocity" type="text" name="velocity"  style="width:50px">
+<input type="submit" value="Go" onclick="fun()" style="width:30px">
+
+</div>
+<script src="boxmove.js"></script>
+<script src="Box.js"></script>
+		<script type="text/javascript">
+{
+animator=new BoxMove();
+animator.boxGen();
+//animator.animate(); 
+fun=function(){
+animator.animate();
+}
+var start,finish;
+ function MouseUp()
+ {
+ start=+new Date();
+ }
+ function MouseDown()
+ {
+ stop=+new Date();
+ }
+function mouseEvent()
+{
+var x=event.clientX;
+var y=event.clientY;
+var vel=(start-stop)/200;
+console.log(vel);
+var angle=Math.floor(Math.abs(Math.atan((590-y)/(x-10)))*180/Math.PI);
+animator.animate(angle,vel);
+}
+}
+</script>
+</body>
+</html>
