@@ -1,0 +1,54 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.mainWrapper{
+	width:550px;
+	background: gray;
+	margin: 0 auto;
+	position: relative;
+}
+.container{
+	width:550px;
+	height:550px;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+}
+.imageWrapper{
+	width: 550px;
+	height: 200000px;
+	position: absolute;
+	margin: 0 auto;
+	background: url("../images/road.png");
+	bottom: 0px;
+}
+.car{
+	position: absolute;
+	height: 100px;
+	width: 75px;
+	background: maroon;
+	background: url("../images/car.png");
+}
+.enemy{
+	background: black;
+	height: 100px;
+	width: 75px;
+	position: absolute;
+	background: url("../images/enemy.png");
+}
+.bullet{
+	position: absolute;
+	width:100px;
+	height: 100px;
+	background: url('../images/bullet.png') no-repeat;
+}
+.gameOver{
+	position: absolute;
+	width: 550px;
+	height: 550px;
+	top: 0px;
+	font-size: 30px;
+	display: none;
+	background: url("../images/game-over.png");
+}
