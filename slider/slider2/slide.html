@@ -1,0 +1,95 @@
+<!doctype html> 
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+  <div class="container clearfix">
+    <div class="hidden clearfix">
+      <img src="images/1.jpeg"/>
+      <img src="images/2.jpeg">
+       <img src="images/1.jpeg">
+      <img src="images/2.jpeg">
+       <img src="images/1.jpeg">
+    </div>  
+  </div>
+
+ <script type="text/javascript">
+  
+    // var container=document.getElementsByClassName('container')[0];
+    var t=0;
+    var counter=0;
+    var imgcount=1;
+    margin=0;
+
+     var hidden=document.getElementsByClassName('hidden');
+    // var box1 = document.getElementById("box1");
+     // var animator = new Animator('hidden');
+    
+     
+
+//     function Animator(element) {
+//     console.log("inside animator");
+ 
+//      this.el = element;
+//      var that = this;
+
+//     this.animate = function(cssProperty, value, duration) {
+//     var style = window.getComputedStyle(element);
+//     var initial = style.getPropertyValue(cssProperty);
+//     initial = parseInt(initial);
+//     var step = (value - initial) / (duration / 50);
+//     var counter = 0;
+//     var innerloop= function(){
+//       counter++;
+//       var current = step * counter;
+//       element.innerHTML = current;
+//       element.style[cssProperty] = current + 'px';
+      
+//       if (counter >= duration/50)
+//         clearInterval(intervalId);
+//     }
+//     }
+//     var intervalId = setInterval(, 50);
+//   }
+// }
+
+
+    
+function total(){
+
+    function slider(){
+    
+        console.log('margin:='+margin);
+        console.log('counter:='+counter);
+        console.log('imgcount:='+imgcount);
+        hidden[0].style.marginLeft=margin+'px';
+          // console.log('******************************************margin:='+margin);
+         if(counter==45)
+        {counter=0;
+          clearInterval(intervals);
+        }
+     
+       margin-=20;
+       counter++;
+    }
+    
+    var intervals = setInterval(slider,10);
+
+   
+    if(imgcount==5)
+    {
+      console.log('=======================================');
+      imgcount=0;
+      margin=-20;
+       console.log('margin=:'+margin);
+    }
+     imgcount++;
+  }
+      
+  var total=setInterval(total,1000);
+
+   </script>
+</body>
+</html>

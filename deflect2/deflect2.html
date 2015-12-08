@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+<head>
+  <title></title>
+<link rel="stylesheet" type="text/css" href="css/deflect2.css">
+<script type="text/javascript" src="js/box.js"></script>
+<script type="text/javascript" src="js/collision.js"></script>
+<script type="text/javascript" src="js/VelocityBar.js"></script>
+</head>
+
+<body class="clearfix">
+<div class="menu clearfix" >
+      <div class="velo">
+      <div class="velocity-tag">
+        Velocity:
+      </div>
+
+      <div class="velocity">
+      </div>
+     </div>
+    
+     <div class="ang">
+      <div class="angle-tag">
+        Angle:
+      </div> 
+
+      <div class="angle">
+        
+      </div>
+     </div>
+ </div>     
+<script>
+VelocityFlag=0;
+b=[];
+
+div1=document.createElement("div");
+div1.setAttribute("class","main");
+document.getElementsByTagName("body")[0].appendChild(div1);
+
+div1.addEventListener("click",mouseclick,false);
+div1.addEventListener("mousedown",mousedown,false);
+div1.addEventListener("mouseup",mouseup,false);
+
+b[0]=new box();
+Detector=new collision();
+bar=new VelocityBar();
+
+bar.create();
+
+for (var i = 1; i <10; i++) {
+b[i]= new box();
+t=Math.floor((Math.random() * 450) + 1);;
+l=Math.floor((Math.random() * 450) + 1);;
+b[i].init(document.getElementsByClassName("main")[0],'red','50','50',t,l);
+};
+
+b[0].init(document.getElementsByClassName("main")[0],'green','50','50',440,3);
+
+
+
+
+var main=function(){
+for (var i = 0; i <10; i++) {
+  b[i].move();
+};
+  Detector.detect(b);
+  if(VelocityFlag==1)
+  {
+    b[0].dy=b[0].dx * bar.counter;
+    b[0].dx=b[0].dx *bar.counter;
+    bar.calibrate();
+  }
+
+}
+
+function mouseclick(e) {
+    var x2 = e.clientX;
+    var y2 = e.clientY;
+    var x1=parseInt(b[0].Left)+29;
+    var y1=parseInt(b[0].Top)+29;
+   // =========================================================
+    // var a=((Math.atan((y1-y2)/(x2-x1)))*57.2958);
+    // // var a=((Math.atan(((-y2)-(-y1))/(x2-x1)))*57.2958);
+    // console.log(a);
+    // debugger
+    // var angle=document.getElementsByClassName('angle')[0];
+    // if(a<44 ){
+    //     b[0].dx=5*bar.counter;
+    //     b[0].dy=-5*(a/45)*bar.counter;
+    //  }
+  
+    // if(a>44){
+    //    b[0].dy=-5*bar.counter;
+    //    b[0].dx=5*((90-a)/45)*bar.counter;
+    //  }
+    // angle.innerHTML="Angle:  "+a;
+// =============================================================
+   var a=Math.atan(((-y2)-(-y1))/(x2-x1))*57.2958;
+    console.log("y1= "+(-y1));
+    console.log("y2= "+(-y2));
+    console.log("x1= "+(x1));
+    console.log("x2= "+(x2));
+    console.log("angle= "+a);
+    // debugger
+    var angle=document.getElementsByClassName('angle')[0];
+    
+    if(y2<=y1){
+      
+      if(a>0){
+
+    if(a<45 ){
+    angle.innerHTML="Angle:  "+a;
+
+        b[0].dx=5*bar.counter;
+        b[0].dy=-5*(a/45)*bar.counter;
+     }
+  
+    if(a>=45){
+    angle.innerHTML="Angle:  "+a;
+
+       b[0].dy=-5*bar.counter;
+       b[0].dx=5*((90-a)/45)*bar.counter;
+     }
+    
+
+      }
+      
+      if(a<0){
+        a=180+a;
+    angle.innerHTML="Angle:  "+a;
+
+        console.log("angle= "+a);
+        // debugger
+     if(a<135 ){
+        b[0].dy=-5*bar.counter;
+        b[0].dx=-5*((135-a)/45)*bar.counter;
+        // debugger
+     }
+  
+    if(a>=135){
+    angle.innerHTML="Angle:  "+a;
+
+       b[0].dx=-5*bar.counter;
+       b[0].dy=-5*((180-a)/45)*bar.counter;
+     }
+
+      }
+    }
+
+  
+
+    if(y2>y1){
+      
+      if(a>0){
+        a=180+a;
+    angle.innerHTML="Angle:  "+a;
+        console.log(a);
+        debugger
+     if(a<225 ){
+        b[0].dx=-5*bar.counter;
+        b[0].dy=5*((225-a)/45)*bar.counter;
+        // debugger
+     }
+  
+    if(a>=225){
+       b[0].dy=5*bar.counter;
+       b[0].dx=-5*((270-a)/45)*bar.counter;
+     }
+      }
+
+      if(a<0){
+        a=180+180+a;
+    angle.innerHTML="Angle:  "+a;
+        console.log(a);
+        debugger
+      if(a<315 ){
+        b[0].dy=5*bar.counter;
+        b[0].dx=5*((315-a)/45)*bar.counter;
+        // debugger
+     }
+  
+    if(a>=315){
+       b[0].dx=5*bar.counter;
+       b[0].dy=5*((360-a)/45)*bar.counter;
+     }
+      }
+
+    }
+
+
+}
+
+function mousedown(e){
+    bar.counter=0;
+   VelocityFlag++;
+   var velocity=document.getElementsByClassName('velocity')[0];
+   // velocity.innerHTML= VelocityFlag;
+}
+
+function mouseup(e) {
+  VelocityFlag--;
+  // bar.counter=1;
+   var velocity=document.getElementsByClassName('velocity')[0];
+   // velocity.innerHTML= VelocityFlag;
+  }
+var moveId=setInterval(main,30);
+
+
+</script>
+</body>
+</html>
