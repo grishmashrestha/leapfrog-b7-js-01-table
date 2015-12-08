@@ -2,6 +2,7 @@
   width: 800px;
   position: relative;
   text-align: center;
+  margin: 0 auto;
 }
 
 .container {
@@ -66,3 +67,4 @@
   height:100px;
   background-image:url(../images/explosion.png);
 }
+

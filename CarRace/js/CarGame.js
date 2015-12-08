@@ -69,7 +69,7 @@ function CarGame(){
     if(e.keyCode == '39' && car.posX != 260){ //right
       car.movePos(+110);
     }
-    if(e.keyCode == '32' && bulletCounter !=0 && bulletFlag < 2){
+    if(e.keyCode == '32' && bulletCounter !=0) {
       bullet = new Bullet(car);
       bullet.create(container);
       allBullet.push(bullet);
@@ -80,43 +80,39 @@ function CarGame(){
 
   this.updateBullet = function(){
 
-    if(allBullet.length >= 1){
-      for(var i = 0; i < allBullet.length; i++){
-          allBullet[i].update();
-          if(allBullet[i].bulletY == 0){
-            allBullet[i].deleteBullet(container);
-            allBullet.splice(i, 1);
-            bulletFlag--;
-          }
-      }
+    for(var i = 0; i < allBullet.length; i++){
+        allBullet[i].update();
+        if(allBullet[i].bulletY == 0){
+          allBullet[i].deleteBullet(container);
+          allBullet.splice(i, 1);
+          bulletFlag--;
+        }
     }
   }
 
   this.collisionDetect = function(){
-    var CarX = car.posX;
-    var CarY = car.posY;
-    var aT = allTraffic;
-    var aB = allBullet;
-    for(i = 0; i < aT.length; i++){
-      if(aT[i].posX <= CarX + 100 && aT[i].posX + 100 >= CarX && aT[i].posY <= CarY + 100 && aT[i].posY + 100 >= CarY){
+    var carX = car.posX;
+    var carY = car.posY;
+    var traffic = allTraffic;
+    var bullet = allBullet;
+    for(var i = 0; i < traffic.length; i++) {
+      if(traffic[i].posX <= carX + 100 && traffic[i].posX + 100 >= carX && traffic[i].posY <= carY + 100 && traffic[i].posY + 100 >= carY){
         that.gameOver();
       }  
     
-    for(j = 0; j < aB.length; j++){
-        if(aT[i].posX <= aB[j].bulletX + 100 && aT[i].posX + 100 >= aB[j].bulletX && aT[i].posY <= aB[j].bulletY + 100 && aT[i].posY + 100 >= aB[j].bulletY){
-          aT[i].deleteTraffic(container);
-          aT.splice(i,1);
-          aB[j].deleteBullet(container);
-          aB.splice(j, 1);
+      for(var j = 0; j < bullet.length; j++) {
+        if(traffic[i].posX <= bullet[j].bulletX + 100
+            && traffic[i].posX + 100 >= bullet[j].bulletX
+            && traffic[i].posY <= bullet[j].bulletY + 100
+            && traffic[i].posY + 100 >= bullet[j].bulletY) {
+          traffic[i].deleteTraffic(container);
+          traffic = traffic.splice(i,1);
+          bullet[j].deleteBullet(container);
+          bullet = bullet.splice(j, 1);
           bulletFlag--;
         }  
       }
-
-      bullets = [];
-
     }
-
-
   }
 
   this.displayBoard = function(){
@@ -132,7 +128,7 @@ function CarGame(){
     clearInterval(intervalId);
     gameOverScreen.style.display = 'block';
   }
-
+  
   
 
 }
