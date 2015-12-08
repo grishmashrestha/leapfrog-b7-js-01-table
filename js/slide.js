@@ -12,9 +12,9 @@ var tracker = document.getElementsByClassName('tracker')[0];
     div.id = i;
     div.addEventListener('click', function(){
       active = this.id;
-
       ml = (imgWidth * (active-1) * -1);
-      animator.animate("margin-left",ml, 1000);
+      animator.finish("margin-left", ml, sliderId);
+      sliderId = setInterval(slide, 3000);      
       trackerChanger();
     });
   tracker.appendChild(div);
@@ -43,10 +43,9 @@ function slide() {
     ++active;
     direction = true;
   }
-  
 
   var ml = (900 * (active-1) * -1);
-  animator.animate("margin-left", ml, 400);
+  animator.animate("margin-left", ml, 300);
   trackerChanger();
 }
 
@@ -56,33 +55,26 @@ function clickMe (sliderId) {
 
   leftBtn.addEventListener('click', function(event) {
     if (active != 1){
-
       --active;
       ml = (imgWidth * (active - 1) * -1);
       animator.finish("margin-left", ml, sliderId);
 
       trackerChanger();      
-      sliderId = setInterval(slide, 2000);      
+      sliderId = setInterval(slide, 3000);      
     }
   });
 
   rightBtn.addEventListener('click', function(event) {
-    clearInterval(sliderId);
     if (active != slides.length){
       ++active;
       ml = (imgWidth * (active - 1) * -1);
-      animator.animate("margin-left", ml, 400);
+      animator.finish("margin-left", ml, sliderId);
       trackerChanger();
+      sliderId = setInterval(slide, 3000);      
     }
-     setTimeout(function(){
-      sliderId = setInterval(slide, 2000);      
-    }, 1000);
   });
 }
 
-
-
-
 trackerChanger();
-var sliderId = setInterval(slide, 2000);
+var sliderId = setInterval(slide, 3000);
 clickMe(sliderId);
