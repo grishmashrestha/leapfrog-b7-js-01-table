@@ -1,0 +1,41 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.mainWrapper{
+	max-width: 1000px;
+	height: 500px;
+	background: maroon;
+	margin: 0 auto;
+	position: relative;
+}
+.ball{
+	width: 50px;
+	height: 50px;
+	border-radius: 50px;
+	border-color: black;
+	border-style: solid;
+	background: blue;
+	position: absolute;
+	text-align: center;
+	line-height: 50px;
+	font-size: 16px;
+	color: white;
+}
+/*.ball1{
+	
+	top:0px;
+	left: 0px;
+}
+.ball2{
+	top:50px;
+	left: 50px;
+}
+.ball3{
+	top:150px;
+	left: 150px;
+}
+.ball4{
+	top:200px;
+	left: 200px;
+}*/
