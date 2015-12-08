@@ -1,3 +1,5 @@
+//Bullet fired by the hero car 
+
 function Bullet(car) {
   this.element = document.createElement('div');
 
@@ -6,21 +8,22 @@ function Bullet(car) {
 
   var that = this;
 
-  this.create = function(container){
-   that.element.className = 'bullet';
-   that.bulletX = car.posX;
-   that.bulletY = car.posY - 50;
-   that.element.style.top = that.bulletY + 'px';
-   that.element.style.left = that.bulletX + 'px';
-   container.appendChild(that.element);
+  this.create = function(container) {
+    that.element.className = 'bullet';
+    that.bulletX = car.posX;
+    that.bulletY = car.posY - 50;
+    that.element.style.top = that.bulletY + 'px';
+    that.element.style.left = that.bulletX + 'px';
+
+    container.appendChild(that.element);
   }
 
-  this.update = function(){
+  this.update = function() {
     that.bulletY -= 1;
-    that.element.style.top =that.bulletY + 'px'; 
+    that.element.style.top = that.bulletY + 'px';
   }
 
-  this.deleteBullet = function(container){
+  this.deleteBullet = function(container) {
     container.removeChild(that.element);
   }
 }

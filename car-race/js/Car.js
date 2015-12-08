@@ -1,3 +1,5 @@
+//Class of the hero car
+
 function Car() {
   this.element = document.createElement('div');
 
@@ -6,16 +8,16 @@ function Car() {
 
   var that = this;
 
-  this.addClass = function(cName){
+  this.addClass = function(cName) {
     that.element.className = cName;
   }
 
-  this.appendTo = function(parentElement){
+  this.appendTo = function(parentElement) {
     parentElement.appendChild(that.element);
   }
 
   //position = {posX : '', posY:''}
-  this.setInitialPos = function(position){
+  this.setInitialPos = function(position) {
     that.posX = position.posX;
     that.posY = position.posY;
 
@@ -23,10 +25,12 @@ function Car() {
     that.element.style.top = that.posY + 'px';
   }
 
-  this.movePos = function(posX){
+  this.movePos = function(posX) {
     that.posX += posX;
     that.element.style.left = that.posX + 'px';
   }
 
- 
+  this.deleteCar = function(container) {
+    container.removeChild(that.element);
+  }
 }
