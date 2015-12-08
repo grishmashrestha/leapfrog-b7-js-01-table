@@ -1,0 +1,48 @@
+<DOCTYPE !html/>
+<html>
+	<head>
+		<title></title>
+		<link href="slingshot.css" rel="stylesheet" />
+	</head>
+	
+	<body>
+		<div class="boundary"></div>
+
+
+
+		<script src="Box.js"></script>
+		<script src="Slingshot.js"></script>
+		
+		<script type="text/javascript">
+			var boxBunch = new Slingshot();
+			boxBunch.init();
+			var dest = [];
+
+
+			this.getPosition = function(element) {
+			    var xPosition = 0;
+			    var yPosition = 0;
+			      
+			    while (element) {
+			        xPosition += (element.offsetLeft - element.scrollLeft + element.clientLeft);
+			        yPosition += (element.offsetTop - element.scrollTop + element.clientTop);
+			        element = element.offsetParent;
+			    }
+			    return { x: xPosition, y: yPosition };
+			 }
+
+			this.getClickPosition = function(e){
+		 		var parentPosition = getPosition(e.currentTarget);
+	     		var xPosition = e.clientX - parentPosition.x;
+	     		var yPosition = e.clientY - parentPosition.y;
+	     		dest = [xPosition, yPosition];
+	     		boxBunch.sling(dest[0], dest[1]);
+	     		console.log('xPosition', xPosition, 'yPosition', yPosition);
+			}
+
+			var boundary = document.getElementsByClassName('boundary')[0];
+			boundary.addEventListener('click', getClickPosition, false);
+			
+		</script>
+	</body>
+</html>
