@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+<title>Race</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script type="text/javascript" src="js/car.js"></script>
+<script type="text/javascript" src="js/background.js"></script>
+<script type="text/javascript" src="js/block.js"></script>
+<script type="text/javascript" src="js/collision.js"></script>
+<script type="text/javascript" src="js/bullet.js"></script>
+</head>
+<body>
+<div class="main">
+</div>
+<script type="text/javascript">
+var bg= new bg();
+var block=new block();
+var car=new car();
+var test=new collide();
+var bullet=new bullet();
+var count=0;
+var leftpos;
+var bulletflag=0;
+addEventListener("keydown", checkKeyPressed, false);
+bg.create();
+car.create();
+block.create();
+// block.create();
+
+var move=function(){
+
+bg.move();
+block.move();
+test.detect(block,car);  
+count++;
+
+if(count==100){
+block.create();
+count=0;
+}
+
+
+if(bulletflag==1)
+{
+ bullet.move();
+}
+
+// if(bullet.Top<-10)
+// {
+//   bulletflag=0;
+// }
+
+car.move();
+
+}
+
+function checkKeyPressed(e) {
+ 
+    if (e.keyCode == "37") {
+      car.Left=car.Left-8;
+    console.log(car.Left);
+      }
+
+
+    if (e.keyCode == "39") {
+      car.Left=car.Left+8;
+    }
+
+    if (e.keyCode == "38") {
+      leftpos=parseInt(car.Left);
+      
+     console.log("leftposition= "+leftpos);
+     bullet.create(leftpos);
+     console.log(bullet.Left);
+     bulletflag=1;
+      }
+
+    }
+
+
+var moveId=setInterval(move,20);
+</script>
+</body>
+</html>

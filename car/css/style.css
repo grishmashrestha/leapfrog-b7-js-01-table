@@ -1,0 +1,40 @@
+.main{
+  width:400px;
+  height:500px;
+  background:black;     
+  margin:0 auto;
+  overflow:hidden;
+  position:relative;
+
+}
+
+.bg{
+  width:400px;
+  height:20000px;
+  background:url("../images/road.png");
+   position:absolute;
+  top:-19500px;
+}
+
+.block{
+  height:50px;
+  width:50px;
+  position:absolute;
+  background: url("../images/block.png");
+}
+
+.car{
+  background:url("../images/car.png");
+  background-repeat: no-repeat;
+  height:40px;
+  width:40px;
+  position:absolute;
+  top:400px;
+}
+
+.bullet{
+    background: url("../images/bullet.png");
+    height:20px;
+    width:20px;
+    position:absolute;
+  }
