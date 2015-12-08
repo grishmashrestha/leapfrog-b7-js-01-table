@@ -1,0 +1,38 @@
+/*start of clearfix*/
+.clearfix:before, .clearfix:after {
+    content:"";
+    display:table;
+}
+.clearfix:after {
+    clear:both;
+}
+.clearfix { zoom:1; /*IE6 & 7*/}
+
+/* end of clearfix*/
+
+.containerWrapper {
+  height: 800px;
+  width: 600px;
+  overflow: hidden;
+  margin:0 auto;
+  position: relative;
+}
+
+.container {
+  height: 100000px;
+  width: 600px;
+  background: url('../images/bk.png') repeat-y;
+  position: absolute;
+  top: -99200px;
+}
+
+.baddie {
+  position: absolute;
+  background-color: blue;
+}
+
+.player {
+  background-color: red;
+  position: absolute;
+  top: 400px;
+}
