@@ -1,0 +1,78 @@
+<!doctype html> 
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script type="text/javascript" src="js/animator_class.js"></script>
+   <script type="text/javascript" src="js/basic.js"></script>
+</head>
+<body>
+  <div class="main clearfix">
+  <div class="link clearfix">
+   <ul>
+      <li id="li1"></li>
+      <li id="li2"></li>
+      <li id="li3"></li>
+      <li id="li4"></li>
+      <li id="li5"></li>
+   </ul>
+  </div> 
+  <div class="left">
+  <input type="button" onclick='select_img_left()'/>  
+  </div>
+  <div class="right">
+    <input type="button" onclick='select_img_right()'/> 
+  </div>
+    <div class="container clearfix">
+       <div class="hidden clearfix">
+        <img src="images/1.jpeg"/>
+        <img src="images/2.jpeg">
+         <img src="images/3.jpg">
+        <img src="images/4.jpg">
+         <img src="images/5.jpg">
+      </div>  
+    </div>
+  </div>
+
+<script>
+
+
+var id;
+var id1;
+var id2;
+var start_slide=function(){
+  // debugger
+  Animate_call();
+   id=setInterval(Animate_call,2000);
+   // debugger
+   console.log("started");
+}
+
+var finish=function(){
+ clearInterval(id); 
+}
+
+var initlink=function(){
+ 
+     document.getElementById('li1').addEventListener("click", function(){
+   imgcount=0;
+   });
+    document.getElementById("li2").addEventListener("click", function(){
+   imgcount=1;});
+
+    document.getElementById("li3").addEventListener("click", function(){
+   imgcount=2;});
+    document.getElementById("li4").addEventListener("click", function(){
+   imgcount=3;});
+    document.getElementById("li5").addEventListener("click", function(){
+   imgcount=4;});
+
+}
+
+start_slide();
+initlink();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+.clearfix:before,.clearfix:after
+{
+  content:"";
+  display: block;
+}
+
+.clearfix:after
+{
+  clear:both;
+}
+
+.clearfix
+{
+  *zoom:1;
+}
+
+.main{
+  width:950px;
+  /*background: black;*/
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+.container
+{
+  width: 900px;
+  /*height:500px;*/
+  background: black;
+  overflow: hidden;
+  /*border:1px solid black;*/
+  margin:0 auto;
+}
+
+.hidden
+{
+  width:45000px;
+  margin-left: 0px;
+  /*overflow: hidden;*/
+
+}
+
+.hidden img
+{
+  width: 900px; 
+  height: 300px;
+  float:left;
+}
+
+.left{
+  width: 40px;
+  top: 10px;
+  position:absolute;
+  left:40px;
+  opacity: .5;
+
+
+}
+.right{
+  width: 45px;
+  top:10px;
+  position: absolute;
+  left: 864px;
+  opacity: .5;
+}
+
+.left:hover , .right:hover{
+  opacity: .7;
+}
+
+.left input
+{
+  width: 40px;
+  height: 280px;
+   background:url("../images/left.png");
+}
+
+.right input
+{
+  width:45px;
+  height: 280px;
+  background:url("../images/right.png");
+}
+
+.link{
+  position: absolute;
+  top: 235px;
+  left:400px;
+  /*background: red;*/
+  padding: 0;
+ }
+.link ul{
+  float: left;
+}
+
+.link ul li{
+  display: inline-block;
+  float:left;
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  background: #c2c2c2;
+  opacity:.9;
+  /*padding: 10px;*/
+}
+
+.link ul:hover #l1{
+  opacity: .7;
+}
+
+
