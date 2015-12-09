@@ -1,0 +1,42 @@
+.trackWrapper{
+	width: 450px;
+	height: 640px;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+}
+
+.replayButton{
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+
+.track{
+	width: 450px;
+	height: 200000px;
+	background-image: url(../images/track.png);
+	background-repeat: repeat-y;
+	position: relative;
+	display: inline-block;
+	margin-top: -19350px;
+}
+
+.playerCar{
+	width: 100px;
+	height: 200px;
+	background-image: url(../images/playerCar.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+	position: absolute;
+	left: 175px;
+	top: 440px;
+}
+
+.rivalCar{
+	width: 100px;
+	height: 200px;
+	background-image: url(../images/rivalCar.png);
+	background-repeat: no-repeat;
+	background-size: contain;
+}

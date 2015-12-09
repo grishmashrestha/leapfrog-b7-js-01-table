@@ -1,0 +1,30 @@
+<html>
+<head>
+	<title>Car Race</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+	<script src="js/cars.js"></script>
+	<script src="js/raceGame.js"></script>
+	<script type="text/javascript">
+		var trackWrapper = document.createElement('div');
+		trackWrapper.setAttribute('class', 'trackWrapper');
+		document.getElementsByTagName('body')[0].appendChild(trackWrapper);
+
+		var replayButton = document.createElement('BUTTON');
+		replayButton.setAttribute('class', 'replayButton');
+		document.getElementsByTagName('body')[0].appendChild(replayButton);
+		replayButton.appendChild(document.createTextNode('Replay'));
+
+
+		var track = document.createElement('div');
+		track.setAttribute('class', 'track');
+		document.getElementsByClassName('trackWrapper')[0].appendChild(track);
+
+		var raceAnimation = new RaceAnimation();
+		raceAnimation.initiate();
+	</script>
+</body>
+</html>
