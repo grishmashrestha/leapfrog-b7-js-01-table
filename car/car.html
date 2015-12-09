@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<title></title>
+		<link href="css/style.css" rel="stylesheet" />
+	</head>
+	
+	<body>
+		<div class="main">
+			<div class="game-div">
+			
+			</div>
+			<div class="score">Score :<span class="currentScore"> 0</span></div>
+			<div class="game-over">Game Over</br>Score :<span class="currentScore">0</span></div>
+		</div>
+		<script src="js/StartGame.js"></script>
+		<script src="js/Player.js"></script>
+		<script src="js/Box.js"></script>
+		<script src="js/Bullet.js"></script>
+		<script>
+			var gameDiv = document.getElementsByClassName('game-div')[0];
+			var startGame = new CarGame(gameDiv);
+			startGame.start("bottom",-5,10);
+			
+			var button = document.createElement('button');
+			button.setAttribute('onclick','restart();');
+			var text = document.createTextNode("Restart");
+			button.appendChild(text);
+			
+			var gameOver = document.getElementsByClassName('game-over')[0];
+			gameOver.appendChild(button);
+			
+			var restart = function(){
+				var curScore = document.getElementsByClassName('currentScore');
+				curScore[0].innerHTML = 0;
+				curScore[1].innerHTML = 0;
+				gameDiv.style.bottom=0;
+				//startGame.element.remove();
+				
+				gameOver.style.display='none';
+				var startGame = new CarGame(gameDiv);
+				startGame.start("bottom",-5,10);
+			}
+		</script>
+	</body>
+</html>
