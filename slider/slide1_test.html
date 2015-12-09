@@ -1,0 +1,113 @@
+<html>
+<head>
+<title>Slider 1</title>
+<link rel="stylesheet" type="text/css" href="css/slider1.css">
+</head>
+
+<body>
+<div class="slider">
+	<div class="sliderLong" id="slider1">
+		<img src="images/img1.jpg" alt="" />
+		<img src="images/img2.jpg" alt="" />
+		<img src="images/img3.jpg" alt="" />
+		<img src="images/img4.jpg" alt="" />
+	</div>
+	<div id="navWrapper"></div>
+	<div id="button">
+		<img src="images/left1.png" id="left" onclick="onleft()" alt="">
+		<img src="images/right1.png" id="right" onclick="onright()" alt="">
+	</div>	
+</div>	
+
+	
+<!--************************animator.js here++++++++++-->
+<script type="text/javascript" src="js/animator.js">
+</script>
+
+<script type="text/javascript" src="js/navigator.js"></script>
+
+
+<script>
+var slideshow=document.getElementById("slider1");
+var slides=slideshow.children;
+//var sliderLong = slider1.children[0];//not used
+var animator=new Animator(slideshow);
+var active=1;
+var imgwidth=900;
+var i=0;
+var navWrapper=document.getElementById("navWrapper")
+var navigate=new Navigator(navWrapper);
+navigate.generateNavigator(slides.length);
+
+
+function slider()
+	{
+	active=active==slides.length?active=1:++active;
+	ml=(imgwidth*(active-1)*-1);
+	navigate.mark(active);
+	animator.animate("margin-left",ml,1000);
+	}
+	setInterval(slider,5000);
+ 
+
+
+
+function onright()
+	{	
+		animator.finish();
+		active=active==slides.length?active=1:++active;
+		ml=imgwidth*(active-1)*-1;
+		navigate.mark(active);
+		animator.animate("margin-left",ml,1000);
+
+	
+	 /*if(active == slides.length){
+        active = 0;
+
+    }
+    ++active;
+    ml = 900 * (active -1)*-1;
+    
+    animator.animate("margin-left",ml,1000);*/
+	
+	}
+
+
+function onleft()
+{
+	animator.finish();
+	active=active==1?active=slides.length:--active;
+	
+	ml=imgwidth*(active-1)*-1;
+	navigate.mark(active);
+	animator.animate("margin-left",ml,1000);
+	
+	/*if(active==1)
+	{
+		active=slides.length+1;
+	}
+	--active;
+	ml=900*(active-1)*-1;
+	
+	animator.animate("margin-left",ml,1000);*/
+}
+
+function moveImage(i){
+	active=0;
+	
+	i=parseInt(i);
+	console.log("i",i);
+	active=i+1;
+	
+	
+	ml = (imgwidth*(active-1) * -1);
+	animator.animate("margin-left",ml,1000);
+	navigate.mark(active);
+}
+</script>
+</body>
+</html>
+
+
+
+

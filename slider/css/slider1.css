@@ -1,0 +1,85 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+div.slider {
+	margin: 0px auto;
+	width:900px;
+	overflow: hidden;
+	border: 1px solid blue;
+	position: relative;
+	padding-bottom: 20px;
+	background: grey;
+}
+div.slider div.sliderLong {
+	
+	width: 10000px;
+	border: 1px solid black;
+}
+div.slider img {
+	width:900px;
+	height:300px;
+	float: left;
+}
+
+
+#left
+{	position: absolute;
+	top: 50%;
+	left:0%;
+	width:40px;
+	height: 40px;
+	}
+#right
+{	
+	position: absolute;
+	top:50%;
+	right: 0%;
+	width:40px;
+	height: 40px;
+}
+#scroll
+{
+	position: absolute;
+	bottom:0%;
+	left:50%;
+	
+}
+#scroll ul
+{
+	background: black;
+}
+#scroll ul li
+{	
+	border-radius: 40px;
+	list-style: none;
+	background: red;
+	float: left;
+	margin-right: 6px;
+}
+#scroll ul li a
+{
+	display: block;
+}
+
+
+#navWrapper{
+position:absolute;
+bottom:0px;
+left:400px;
+
+}
+#navWrapper ul li{
+list-style:none;
+float:left;
+border-radius:5px;
+border:1px solid green;
+
+margin:2px;
+}
+#navWrapper ul li a{
+display:block;
+border-radius:4px;
+height:10px;
+width:10px;
+}
