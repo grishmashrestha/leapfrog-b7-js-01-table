@@ -1,0 +1,52 @@
+.wrapper
+{
+	margin: 0px auto;
+	width:800px;
+	
+
+}
+.container
+{
+	margin: 0px auto;
+	width: 400px;
+	height: 600px;
+	position: relative;
+	overflow: hidden;
+}
+.road
+{
+	margin: 0px auto;
+	width: 400px;
+	height:100000px;
+	position: absolute;
+	background: url('../images/road1.jpg');
+	bottom:0px;
+}
+.car
+{
+	position: absolute;
+	width:100px;
+	height: 100px;
+	
+	
+	background: url('../images/car.png');
+}
+.obstacle
+{
+	position: absolute;
+	width:100px;
+	height: 100px;
+	background: grey;
+	border:1px solid red;
+}
+.gameOver
+{
+	position: absolute;
+	width:400px;
+	height: 600px;
+	left: 250px;
+	top: 0px;
+	font-size:30px; 
+	display: none;
+	background: url('../images/game.png');
+}

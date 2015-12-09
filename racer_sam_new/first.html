@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>RACING car</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/firstcss.css">
+</head>
+<body>
+	<div class="wrapper">
+	</div>
+	<div class="gameOver">
+	</div>
+
+
+	
+	<script type="text/javascript">
+	wrapper=document.getElementsByClassName("wrapper")[0];
+	container=document.createElement("div");
+	container.setAttribute("class","container");
+	wrapper.appendChild(container);
+
+	road=document.createElement("div");
+	road.setAttribute("class","road");
+	container.appendChild(road);
+	</script>
+	<script type="text/javascript" src="js/car.js"></script>
+	<script type="text/javascript" src="js/obstacle.js"></script>
+	<script type="text/javascript" src="js/cargame.js"></script>
+
+	
+</body>
+</html>
