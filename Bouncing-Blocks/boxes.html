@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title></title>
+		<link href="css/boxes.css" rel="stylesheet" />
+	</head>
+	
+	<body>
+		<script src="js/BoxAnimation.js"></script>
+		<script src="js/Box.js"></script>
+		<script type="text/javascript">
+var canvas = document.createElement("div");
+canvas.setAttribute("class", "canvas");
+document.getElementsByTagName("body")[0].appendChild(canvas);
+
+/*
+var animator = new Animator(div1);
+animator.animate({prop: 'left', value:'200px'}, 500);
+*/
+
+var boxAnimation = new BoxAnimation();
+boxAnimation.init();
+
+		</script>
+	</body>
+</html>
