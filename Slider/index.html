@@ -1,0 +1,176 @@
+<html>
+<head>
+	<title>Slider</title>
+
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+
+<div class="slider clearfix">
+	<div class="slider-long">
+		<img src="images/image1.jpg" alt="" />
+		<img src="images/image2.jpg" alt="" />
+		<img src="images/image3.jpg" alt="" />
+	</div>
+
+	<div id="left-arrow" class="arrow"></div>
+	<div id="right-arrow" class="arrow"></div>
+
+	<div id="pager-wrapper"></div>
+</div>
+
+<script type="text/javascript" src="js/animator.js"></script>
+
+<script >
+
+	
+	
+	function slideShow(){
+		
+	var active = 1;
+	var slider = document.getElementsByClassName('slider-long')[0];
+	var sliderLong = slider.children[0];
+	var totalSlides = slider.children;
+
+	var leftArrow = document.getElementById('left-arrow');
+	var rightArrow = document.getElementById('right-arrow');
+
+	var imageWidth = 960; 
+	var sliderLeftMargin = 0;
+	var animator = new Animator(sliderLong);
+
+		var individualInterval = setInterval(slide,2000);
+		arrowClick();
+		pagerPanel();
+		clickPager();
+		highlightPager(active);
+
+		function slide(){
+			
+			
+
+			if(active < 3) {
+				sliderLeftMargin = active * (-imageWidth);
+				active++;
+
+				
+			}else{
+				sliderLeftMargin = 0;
+				active = 1;
+			}	 		
+
+			
+			animator.animate('margin-left', sliderLeftMargin, 1000);
+			highlightPager(active);
+			
+		}
+
+		function arrowClick(){
+
+			leftArrow.addEventListener('click', function (event) {
+     				var currentLeftMargin = parseInt(sliderLong.style.marginLeft);
+
+     				if(active > 1){
+
+     					if((currentLeftMargin%imageWidth)==0){
+     						clearInterval(individualInterval);
+     						sliderLeftMargin = sliderLeftMargin + imageWidth;
+     						active--;
+     						animator.animate('margin-left', sliderLeftMargin, 500);
+     						individualInterval = setInterval(slide,2000);
+     						highlightPager(active);	
+     					}else{
+     						/*
+     						  animator.finish('margin-left', sliderLeftMargin, 1000);
+     						  sliderLeftMargin = sliderLeftMargin + imageWidth;
+     						  individualInterval = setInterval(slide,2000);
+
+     						*/
+     					}
+
+     				}
+	 			});
+
+
+			rightArrow.addEventListener('click', function (event) {
+					var currentLeftMargin = parseInt(sliderLong.style.marginLeft);
+
+     				if(active < 3 && (currentLeftMargin%imageWidth)==0){
+     					clearInterval(individualInterval);
+     					sliderLeftMargin = sliderLeftMargin - imageWidth;
+     					active++;
+     					animator.animate('margin-left', sliderLeftMargin, 500);
+     					individualInterval = setInterval(slide,2000);
+     					highlightPager(active);
+     				}
+	 			});
+
+		}
+
+		function pagerPanel(){
+
+			var pagerWrapper = document.getElementById('pager-wrapper');
+			var ul = document.createElement('ul');
+			ul.className = 'ulPager';
+			for(var i=0; i<totalSlides.length; i++){
+				var li = document.createElement('li');
+				li.id = i;
+				ul.appendChild(li);
+			}
+			
+			pagerWrapper.appendChild(ul);
+
+
+		}
+
+		function highlightPager(active){
+			var liArray = document.getElementsByClassName('ulPager')[0].children;
+			
+			for(var i=0; i < liArray.length; i++){
+				var unhighlightLi = document.getElementsByClassName('ulPager')[0].children[i];
+				unhighlightLi.style.backgroundColor = 'blue';
+			}
+
+			var highlightLi = document.getElementsByClassName('ulPager')[0].children[active-1];
+			highlightLi.style.backgroundColor = 'red';
+			
+		}
+
+		function clickPager(){
+			var liArray = document.getElementsByClassName('ulPager')[0].children;
+			
+			for(var i=0; i < liArray.length; i++){
+				var clickLi = document.getElementsByClassName('ulPager')[0].children[i];
+				clickLi.id = i+1;
+				clickLi.addEventListener('click', function (event) {
+					var currentLeftMargin = parseInt(sliderLong.style.marginLeft);
+					if((currentLeftMargin%imageWidth)==0){
+     					clearInterval(individualInterval);
+     					active = this.id;
+     					sliderLeftMargin = ((active-1) * (-imageWidth));	
+     					animator.animate('margin-left', sliderLeftMargin, 500);
+     					individualInterval = setInterval(slide,2000);
+     					highlightPager(active);
+     				}
+					
+	 			});
+			} 
+		}
+				
+
+	}
+
+	slideShow();
+	
+	
+</script>
+
+	
+
+
+
+</script>
+</body>
+</html>
