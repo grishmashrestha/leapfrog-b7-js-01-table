@@ -18,6 +18,10 @@
   position: relative;
 }
 
+.container-outer {
+  width: 600px;  
+}
+
 .container {
   height: 100000px;
   width: 600px;
@@ -28,11 +32,16 @@
 
 .baddie {
   position: absolute;
+  /*background: url('../images/badCar.png');*/
+  /*background-repeat: none;
+  background-size: cover;*/
   background-color: blue;
 }
 
 .player {
-  background-color: red;
   position: absolute;
   top: 400px;
+  background: url('../images/player.png');
+  background-repeat: none;
+  background-size: cover;
 }

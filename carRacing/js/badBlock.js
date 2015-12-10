@@ -1,34 +1,36 @@
-function BadBlock(divId, position) {
-  var ht = 70; 
-  var wd = 50; 
-  var left = Math.floor(Math.random() * 500) + 20; 
+function BadBlock() {
+  var ht = 100; 
+  var wd = 70; 
+  var left = (((Math.floor(Math.random() * 3) + 1) * 200) - 100 - (wd/2)); 
   var top = 10;
   var baddie = document.createElement('div');
   var parent = document.getElementsByClassName('containerWrapper')[0];
-  var divId = divId;
 
   this.create = function() {
-    if (divId == 0){
-      var deadBaddies = document.getElementsByClassName('baddie');
-      var len = deadBaddies.length;
-      if (len > 0) {  
-        for (i=(len); i >0; i--) {
-          parent.removeChild(deadBaddies[i-1]);    
-        }
-      }
-    }
     baddie.setAttribute('class', 'baddie');
     baddie.style.height =  ht +'px';
     baddie.style.width = wd +'px';
     baddie.style.top = top +'px';
     baddie.style.left = left +'px';
-    this.addClass('baddie'+divId);
     this.appendTo(parent);
   }
 
   this.move = function() {
-    top = top + 1;
-    baddie.style.top = top + 'px';
+    var amIDead = false;
+
+    if (top == 800){
+      amIDead = removeBaddie();
+    }
+    else {
+      top = top + 2;
+      baddie.style.top = top + 'px';
+    }
+    return amIDead;
+  }
+
+  var removeBaddie = function() {
+    parent.removeChild(baddie);
+    return true;
   }
 
   this.appendTo = function(parentElement) {

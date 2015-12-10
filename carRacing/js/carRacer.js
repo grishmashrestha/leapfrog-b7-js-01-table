@@ -1,21 +1,21 @@
-var counter = 800;
+var counter = 200;
 var creator = new Creator();
 
 creator.createPlayer();
 
 var mainIntervalId = setInterval(function(){
   gameloop();
-}, 1);
+}, 4);
 
 var gameloop = function() {
   creator.moveBackground();
-  if (counter == 800) {
-    creator.createBaddies();
+  if (counter == 200) {
+    creator.createBaddie();
     counter = 0;
   }
   creator.moveBaddies();
-  creator.checkBaddies();
   creator.movePlayer();
+  creator.checkBaddies();
   counter ++;
 }
 

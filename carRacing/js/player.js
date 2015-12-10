@@ -1,7 +1,7 @@
 function Player() {
-  var ht = 50; 
-  var wd = 100; 
-  var left = 250; 
+  var ht = 100; 
+  var wd = 50; 
+  var left = 250+ wd/2; 
   var top = 600;
   var player = document.createElement('div');
   var parent = document.getElementsByClassName('containerWrapper')[0];
@@ -13,12 +13,15 @@ function Player() {
     player.style.width = wd +'px';
     player.style.top = top +'px';
     player.style.left = left +'px';
-    this.addClass('player'+divId);
     this.appendTo(parent);
   }
 
   this.move = function() {
-    player.style.left = left +'px';
+    if ((left < 0) || (left > (600-wd))) {      
+    }
+    else {
+      player.style.left = left +'px';
+    }
   }
 
   this.appendTo = function(parentElement) {
